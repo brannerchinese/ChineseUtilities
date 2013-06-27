@@ -31,12 +31,18 @@ from the results being returned by the danielsoper.com on-line calculator.
 Results have been checked against a number of those shown on
 http://www.physics.csbsju.edu/stats/exact.html (20130626) and found correct.
 
+Decimal is used to allow very large factorials.
+
 '''
 
-from math import factorial
+import math
+from decimal import Decimal
 
 def binomial(n, k):
     return (factorial(n) / (factorial(k) * factorial(n-k)))
+
+def factorial(n):
+    return Decimal(math.factorial(n))
 
 def main(a, b, c, d, e, f, g, h, i):
     n = a + b + c + d + e + f + g + h + i
