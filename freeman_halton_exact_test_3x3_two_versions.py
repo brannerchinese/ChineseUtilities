@@ -5,7 +5,7 @@
 
 '''For a 3x3 contingency table:
 
-         1    2    3
+          1   2   3
         -------------
     a   | a | d | g |
         -------------
