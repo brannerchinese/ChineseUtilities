@@ -18,5 +18,31 @@
 
  1. All capitalized Pīnyīn letters are automatically reduced to lower case in order to simplify the processes.
 
-[end]
+ 1. To see test-by-test output of `separate_pinyin_call.py`, use a third argument `output=True` (the default is `False`):
+ 
+        >>> S.separate('hǎojǐběnr', output=True)
 
+ or
+        
+        >>> S.separate('hǎojǐběnr', 'r', output=True)
+ 
+ Output:
+ 
+        From remòshuǎngyuan
+            produced ['re', 'mò', 'shuǎng', 'yuan'].
+        From yǒusan
+            produced ['yǒu', 'san'].
+        From lōujuǎn
+            produced ['lōu', 'juǎn'].
+        From gáguàichèyǎo
+            produced ['gá', 'guài', 'chè', 'yǎo'].
+        From dēikūn
+            produced ['dēi', 'kūn'].
+        From dunchāibiao
+            produced ['dun', 'chāi', 'biao'].
+        From fēngcěipènglaifěngdǎ
+            produced ['fēng', 'cěi', 'pèng', 'lai', 'fěng', 'dǎ'].
+
+ Note that syllables both with and without tone-marks are included in the inventories. No attempt is made to decide whether a particular Pīnyīn string actually means anything — this is purely a tool to break well-formed Pīnyīn strings into their component syllables, without regard to meaning.
+
+[end]
