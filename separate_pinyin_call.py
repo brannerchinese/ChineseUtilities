@@ -1,6 +1,6 @@
 # separate_pinyin_call.py
 # David Prager Branner
-# 20130823
+# 20130823, works
 '''Create random strings of Pīnyīn and attempt to parse them into discrete
 syllables'''
 
@@ -41,7 +41,7 @@ def get_random_string(a_list, all_vowels):
             for i in syllables[1:]])
     return ''.join(temp), syllables
 
-def main(filename='pinyin_syllables_20130728.txt'):
+def main(filename='pinyin_syllables_20130728.txt', output=False):
     '''Runs never-ending test of separate_pinyin.py.
     
     Use main() for standard syllables; use main('r') for all syllables,
@@ -77,6 +77,9 @@ def main(filename='pinyin_syllables_20130728.txt'):
             finished_list = S.separate(string_in_midprocess, filename)
             if finished_list != original_list:
                 print('Bad!', finished_list, '\n vs.', original_list)
+            elif output:
+                print('From {}\n    produced {}.'.
+                        format(string_in_midprocess, finished_list))
     except KeyboardInterrupt:
         total_time = time.time() - start_time
         print('\n{:.0f} tests/second'.
