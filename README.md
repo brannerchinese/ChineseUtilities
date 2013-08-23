@@ -30,7 +30,7 @@ Utilities to help me with Chinese-language work
  To include *érhuà* 兒化 syllables, use a second argument, `'r'`:
  
         >>> import separate_pinyin as S
-        >>> S.separate('hǎojǐběnr')
+        >>> S.separate('hǎojǐběnr', 'r')
         ['hǎo', 'jǐ', 'běnr']
 
  Ordinary syllables `ér`, `ěr`, `èr` belong to the basic syllable-inventory and do not require the argument `'r'`. Two files containing the syllable inventories are found in a `DATA` directory; note that those that are not actually attested in Standard Mandarin (such as `*dén`) are included but marked as `True` in a second field; they will raise an error in `separate_pinyin.py`.
