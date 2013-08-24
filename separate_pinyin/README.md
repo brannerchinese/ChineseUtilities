@@ -14,17 +14,23 @@
 
  1. Ordinary syllables `ér`, `ěr`, `èr` belong to the basic syllable-inventory and do not require the argument `'r'`. Two files containing the syllable inventories are found in a `DATA` directory; note that those that are not actually attested in Standard Mandarin (such as `*dén`) are included but marked as `True` in a second field; they will raise an error in `separate_pinyin.py`.
  
- 1. `separate_pinyin.py` can be tested with an infinite loop of randomly generated syllables, using ``separate_pinyin_call.py`. On control-c the loop terminates and statistics are reported. The loop also terminates if an error is found, but without statistics.
-
  1. All capitalized Pīnyīn letters are automatically reduced to lower case in order to simplify the processes.
 
- 1. To see test-by-test output of `separate_pinyin_call.py`, use a third argument `output=True` (the default is `False`):
- 
-        >>> S.separate('hǎojǐběnr', output=True)
+ 1. `separate_pinyin.py` can be tested with an infinite loop of randomly generated syllables, using ``separate_pinyin_call.py`. On control-c the loop terminates and statistics are reported. The loop also terminates if an error is found, but without statistics.
+
+        >>> C.main()
 
  or
         
-        >>> S.separate('hǎojǐběnr', 'r', output=True)
+        >>> C.main('r')
+ 
+ To see test-by-test output of `separate_pinyin_call.py`, use a third argument `output=True` (the default is `False`):
+ 
+        >>> C.main(output=True)
+
+ or
+        
+        >>> C.main('r', output=True)
  
  Output:
  
