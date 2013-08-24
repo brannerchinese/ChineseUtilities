@@ -34,7 +34,7 @@
         
         >>> C.main('r', output=True)
  
- Output:
+ Sample output:
  
         From remòshuǎngyuan
             produced ['re', 'mò', 'shuǎng', 'yuan'].
@@ -50,5 +50,10 @@
             produced ['dun', 'chāi', 'biao'].
         From fēngcěipènglaifěngdǎ
             produced ['fēng', 'cěi', 'pèng', 'lai', 'fěng', 'dǎ'].
+        ...
+        ^C
+        358 tests/second
+        Total tests run: 62048
+
 
 [end]
