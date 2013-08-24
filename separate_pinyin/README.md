@@ -14,9 +14,9 @@
 
  1. Ordinary syllables `ér`, `ěr`, `èr` belong to the basic syllable-inventory and do not require the argument `'r'`. Two files containing the syllable inventories are found in the `DATA` directory; those are not actually attested in Standard Mandarin (such as `*dén`) are present in the file but marked as `True` in a second field; they will raise an error in `separate_pinyin.py`; attested syllables have no such notation.
  
- 1. **Note**: 
+ 1. **Notes**: 
   * All capitalized Pīnyīn letters are automatically reduced to lower case in order to simplify the processes.
-  * Note that syllables both with and without tone-marks are included in the inventories. No attempt is made to decide whether a particular Pīnyīn string actually means anything — this is purely a tool to break well-formed Pīnyīn strings into their component syllables, without regard to meaning.
+  * Syllables both with and without tone-marks are included in the inventories. No attempt is made to decide whether a particular Pīnyīn string actually means anything — this is purely a tool to break well-formed Pīnyīn strings into their component syllables, without regard to meaning.
 
  1. `separate_pinyin.py` can be tested with an infinite loop of randomly generated syllables, using ``separate_pinyin_call.py`. On control-c the loop terminates and statistics are reported. The loop also terminates if an error is found, but without statistics.
 
