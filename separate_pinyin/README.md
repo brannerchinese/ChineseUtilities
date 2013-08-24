@@ -18,7 +18,7 @@
   * All capitalized Pīnyīn letters are automatically reduced to lower case in order to simplify the processes.
   * Syllables both with and without tone-marks are included in the inventories. No attempt is made to decide whether a particular Pīnyīn string actually means anything — this is purely a tool to break well-formed Pīnyīn strings into their component syllables, without regard to meaning.
 
- 1. `separate_pinyin.py` can be tested with an infinite loop of randomly generated syllables, using ``separate_pinyin_call.py`. On control-c the loop terminates and statistics are reported. The loop also terminates if an error is found, but without statistics.
+ 1. `separate_pinyin.py` can be tested with an infinite loop of randomly generated syllables, using `separate_pinyin_call.py`. On control-c the loop terminates and statistics are reported. The loop also terminates if an error is found, but without statistics.
 
         >>> C.main()
 
