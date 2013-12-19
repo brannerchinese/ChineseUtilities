@@ -1,0 +1,44 @@
+/* Filename: tablize_input_kanji.css
+   Date: 20130620
+   Author: David Prager Branner */
+
+* {
+ outline: 1px dotted blue;
+}
+
+#buttonPanel {
+  clear: both;
+}
+
+#form {
+  display: inline-block;
+}
+
+#theSearchBox {
+  float: left;
+}
+
+#Submit {
+  clear: both;
+}
+
+#theTable {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+textArea{
+  width:180px;
+  height:200px;
+}
+
+.vertical {
+  style: border:1px;border-spacing:0px 0px;
+}
+ 
+.horizontal {
+  style: border:1px;border-spacing:20px 0px;
+
