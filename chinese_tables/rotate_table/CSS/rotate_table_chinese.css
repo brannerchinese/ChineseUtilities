@@ -1,0 +1,12 @@
+/* filename: rotate_table_chinese.css
+   date: 20130611
+   author: David Prager Branner */
+
+.vertical {
+  style: border:1px;border-spacing:0px 0px;
+}
+
+.horizontal {
+  style: border:1px;border-spacing:20px 0px;
+}
+
