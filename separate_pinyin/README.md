@@ -12,6 +12,8 @@
         >>> S.separate('hǎojǐběnr', 'r')
         ['hǎo', 'jǐ', 'běnr']
 
+   Between using `'r'` and omitting it, using it is the safer option.
+
  1. Ordinary syllables `ér`, `ěr`, `èr` belong to the basic syllable-inventory and do not require the argument `'r'`. Two files containing the syllable inventories are found in the `DATA` directory; those are not actually attested in Standard Mandarin (such as `*dén`) are present in the file but marked as `True` in a second field; they will raise an error in `separate_pinyin.py`; attested syllables have no such notation.
  
  1. **Notes**: 
@@ -20,6 +22,7 @@
 
  1. `separate_pinyin.py` can be tested with an infinite loop of randomly generated syllables, using `separate_pinyin_call.py`. On control-c the loop terminates and statistics are reported. The loop also terminates if an error is found, but without statistics.
 
+        >>> import separate_pinyin_call as C
         >>> C.main()
 
  or
