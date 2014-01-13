@@ -32,9 +32,9 @@ def get_all_letters():
     all_vowels = r'(' + '|'.join(all_vowels) + r')'
     consonants_not_hngr = [
             'b', 'p', 'm', 'f',
-            'd', 't', 'l', 
-            'k', 
-            'j', 'q', 'x', 
+            'd', 't', 'l',
+            'k',
+            'j', 'q', 'x',
             'z', 'c', 's',
             'y', 'w']
     consonants_not_hngr = r'(' + '|'.join(consonants_not_hngr) + r')'
@@ -52,7 +52,9 @@ def get_py_syllables(filename):
 def validate_cleaned_syllables(finished_string, all_syllables):
     for i, item in enumerate(finished_string):
         if item not in all_syllables:
-            if item == 'r':
+            # Check i > 0, otherwise accidently get:
+            #     finished_string[i-1] being finished_string[-1]!
+            if item == 'r' and i > 0:
                 finished_string[i-1] = finished_string[i-1] + 'r'
                 finished_string[i] = ''
                 continue
@@ -62,47 +64,47 @@ def validate_cleaned_syllables(finished_string, all_syllables):
     return (0, finished_list) # no error found
 
 def separate(initial_string, filename='pinyin_syllables_20130728.txt'):
-    '''Breaks a string of Pīnyīn into its component syllables. 
-    
+    '''Breaks a string of Pīnyīn into its component syllables.
+
     Reports the first error encountered, if any.
-    
+
     Use separate() for standard syllables; use separate('r') for all syllables,
     including those with epenthetic -r.'''
     if filename == 'r':
         filename = 'pinyin_syllables_with_r_20130728.txt'
     all_syllables = get_py_syllables(filename)
-    (all_vowels, all_e, all_vowels_and_ngrm, all_vowels_and_gr, 
+    (all_vowels, all_e, all_vowels_and_ngrm, all_vowels_and_gr,
             consonants_not_hngr) = get_all_letters()
     # Punctuation marks are always a syllable-boundary.
     # And convert to lower case throughout.
     any_punct = ('[{}]'.
             format(r''.join(
-                [i for i in string.punctuation[:-1]]) + 
-                string.punctuation[-1] + '’' + '‧'))
+                [i for i in string.punctuation[:-1]]) +
+                string.punctuation[-1] + '’' + '‧' + '…'))
     string_in_midprocess = re.sub(
             any_punct, r' ', initial_string.lower())
-    # Vowel/n/g/r/m + consonant always straddles a syllable-boundary 
-    # except when the consonant is in {hngr}. 
+    # Vowel/n/g/r/m + consonant always straddles a syllable-boundary
+    # except when the consonant is in {hngr}.
     string_in_midprocess = re.sub(
-            all_vowels_and_ngrm + consonants_not_hngr, 
-            r'\1 \2', 
+            all_vowels_and_ngrm + consonants_not_hngr,
+            r'\1 \2',
             string_in_midprocess)
     # Vowel/g/r + h/g always straddles a syllable-boundary.
     string_in_midprocess = re.sub(
-            all_vowels_and_gr+r'(h|H|g|G)', 
-            r'\1 \2', 
+            all_vowels_and_gr+r'(h|H|g|G)',
+            r'\1 \2',
             string_in_midprocess)
     # r/n/g + n/r/h always straddles a syllable-boundary.
     string_in_midprocess = re.sub(
-            r'(r|R|n|N|g|G)'+r'(n|N|r|R|h|H)', 
-            r'\1 \2', 
+            r'(r|R|n|N|g|G)'+r'(n|N|r|R|h|H)',
+            r'\1 \2',
             string_in_midprocess)
     # n/r/g + vowel always straddles a syllable-boundary if a letter
     # immediately precedes n/r/g. Syllables beginning with vowels will
     # have been separated by the apostrophe rules.
     string_in_midprocess = re.sub(
-            r'([^ ])(r|R|n|N|g|G)' + all_vowels, 
-            r'\1 \2\3', 
+            r'([^ ])(r|R|n|N|g|G)' + all_vowels,
+            r'\1 \2\3',
             string_in_midprocess)
     # "hm" is always a discrete syllable.
     string_in_midprocess = re.sub(
@@ -113,8 +115,8 @@ def separate(initial_string, filename='pinyin_syllables_20130728.txt'):
     # vowel+r, if not part of discrete "er" (above) and preceded by a
     # letter, now always straddles a syllable-boundary.
     string_in_midprocess = re.sub(
-            r'([^ ])' + all_vowels + r'(r|R)', 
-            r'\1\2 \3', 
+            r'([^ ])' + all_vowels + r'(r|R)',
+            r'\1\2 \3',
             string_in_midprocess)
     # vowel + n + vowel occurring here always has n as syllable-start.
     # This rule is *not* redundant in spite of the "n/r/g + vowel"
