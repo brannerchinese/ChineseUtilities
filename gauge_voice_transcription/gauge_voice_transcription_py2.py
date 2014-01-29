@@ -21,7 +21,7 @@ TB2WN = {
 WNL = nltk.stem.WordNetLemmatizer()
 
 def percent_matching(s1, s2):
-    """Compare the closeness of two input strings."""
+    """Compare the likeness of two input strings."""
     #
     # Case 1. Simple case: strings are compared character by character.
     #
@@ -83,6 +83,7 @@ def percent_matching(s1, s2):
             round(gauge_raw, 1), round(gauge_word, 1), round(gauge_lemma, 1)))
 
 def clean_and_normalize(the_str):
+    """Return all-lower case, unpunctuated, lemmatized list of words in string."""
     # Annoyingly, nltk.word_tokenize does not handle contractions well.
     # The substitutions below are best guesses; some will occasionally be wrong.
     # In particular, 's is not handled at all here, since it includes
