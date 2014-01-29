@@ -7,6 +7,11 @@
 import re
 import difflib
 import nltk
+import sys
+
+if sys.version_info[0] != 2 or sys.version_info[1] < 6:
+    print("This program requires Python 2, versions 2.6 or above.")
+    sys.exit(1)
 
 # Treebank and WordNet POS need correspondences specified in order for the
 # NLTK lemmatizer to work correctly on the tagged output. Only the following
@@ -37,13 +42,13 @@ def percent_matching(s1, s2):
     #
     # Case 2. Case of whole words rather than characters.
     #
-    # Get set of all unique words
+    # Get set of all unique words.
     s1_split = s1_cleaned.split()
     s2_split = s2_cleaned.split()
     all_unique = set(s1_split)
     all_unique.update(set(s2_split))
     #
-    # Place all unique words in dict {word : item + 32}
+    # Place all unique words in dict {word : item + 32}.
     #     Note that 32 is first printable character, for ease displaying most
     #     (not necessarily all) of resulting string.
     words_as_chars = {word:unichr(i + 32) for i, word in enumerate(all_unique)}
@@ -53,7 +58,7 @@ def percent_matching(s1, s2):
     s1_words = ''.join([words_as_chars[w] for w in s1_split])
     s2_words = ''.join([words_as_chars[w] for w in s2_split])
     #
-    # Apply difflib
+    # Apply difflib.
     gauge_word = difflib.SequenceMatcher(
             None, s1_words, s2_words, autojunk=False).ratio()
     #
