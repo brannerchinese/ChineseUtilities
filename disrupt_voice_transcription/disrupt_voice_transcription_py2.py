@@ -1,4 +1,4 @@
-# gauge_voice_transcription_py2.py
+# disrupt_voice_transcription_py2.py
 # 20140129, working.
 # David Prager Branner
 
