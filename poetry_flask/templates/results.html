@@ -1,0 +1,17 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Test 3{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  <!-- ... -->
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2>胡說</h2>
+    {{session['input']}}
+    {{text}}
+    <br><br><a href="{{url_for('index')}}">Return to input page.</a>
+</div>
+{% endblock %}
