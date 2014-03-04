@@ -9,6 +9,7 @@ from flask.ext.bootstrap import Bootstrap
 from flask.ext.wtf import Form
 from wtforms import TextField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired
+from format_poem import format_poem
 
 class PoemInputForm(Form):
     poem = TextAreaField('poem', validators=[DataRequired()])
@@ -23,15 +24,15 @@ bootstrap = Bootstrap(app)
 def index():
     the_form = PoemInputForm()
     if the_form.validate_on_submit():
-        session['input'] = the_form.poem.data
+        session['input_poem'] = the_form.poem.data
         return redirect('/format')
     return render_template('index.html', form=the_form)
 
 @app.route('/format')
 def results():
-    text = session['input']
+    session['input_poem'] = format_poem(session['input_poem'])
     # process text
-    return render_template('results.html', text=text)
+    return render_template('results.html')
 
 if __name__ == ('__main__'):
     app.run(debug=True)
