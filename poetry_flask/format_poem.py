@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-# Strangely, encoding declaration is needed under Python 3 here to avoid
-#    "SyntaxError: Non-ASCII character '\xe6'".
-#
 # format_poem.py
 # David Prager Branner
 # 20140304
@@ -17,6 +13,7 @@ def format_poem(poem, to_break_at=['。', '，', '？'], to_strip=None):
     poem = clean_poem(poem, to_break_at=['。', '，', '？'], to_strip=None)
     poem = regularize_line_length(poem)
     poem = rotate_poem(poem)
+    poem = make_html_table(poem)
     return poem
 
 def clean_poem(poem, to_break_at=['。', '，', '？'], to_strip=None):
@@ -52,11 +49,17 @@ def rotate_poem(poem):
     rotated = [
                 [[] for i in range(rows)]
                     for i in range(cols)]
+    # Populate
     for row in range(rows):
         for char in range(cols):
             rotated[char][rows - 1 - row] = poem[row][char]
     return rotated
 
-##    formatted = ['<tr>' +
-##            '\n'.join(['<td>' + str(char) + '</td>' for char in line])
-##            + '</tr>' for line in poem]
+def make_html_table(rotated):
+    formatted = '\n'.join(
+            ['<table>\n  <tr>\n    ' + '\n    '.join(
+                ['<td>' + str(char) + '</td>' for char in line]
+                ) + '\n  </tr>\n</table>' for line in rotated
+                ]
+            )
+    return formatted
