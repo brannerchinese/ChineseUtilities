@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-# Strangely, encoding declaration is needed under Python 3 here to avoid
-#    "SyntaxError: Non-ASCII character '\xe6'".
-#
 # test_format_poem.py
 # David Prager Branner
 # 20140304
