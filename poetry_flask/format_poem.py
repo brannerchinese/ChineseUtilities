@@ -21,19 +21,22 @@ def format_poem(poem, to_break_at=['。', '，'], to_strip=None):
     poem = [
             [char for char in line if char not in to_strip] 
             for line in poem]
-    pprint.pprint(poem)
+#    pprint.pprint(poem)
     print('\n')
+    # Pad all lines to make them as long as the longest line.
+    longest_length = max([len(line) for line in poem])
+    print(longest_length)
     # Rotate poem.
     rotated = []
     for row in range(len(poem)):
         line = []
         for char in range(len(poem)):
             old_line = poem[len(poem) - 1 - char]
-            print(row, char, old_line)
+#            print(row, char, old_line)
             if row >= len(old_line):
                 continue
             line.append(poem[len(poem) - 1 - char][row])
-        print(line)
+#        print(line)
         rotated.append(line)
 #    rotated = [
 #            pass
