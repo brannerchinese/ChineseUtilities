@@ -1,5 +1,5 @@
 {% extends "bootstrap/base.html" %}
-{% block title %}Test 3{% endblock %}
+{% block title %}Formatted poem{% endblock %}
 
 {% block navbar %}
 <div class="navbar navbar-fixed-top">
@@ -9,9 +9,8 @@
 
 {% block content %}
 <div class="container">
-  <h2>胡說</h2>
-    {{session['input']}}
-    {{text}}
+  <h2>Formatted poem</h2>
+    {{session['input_poem']}}
     <br><br><a href="{{url_for('index')}}">Return to input page.</a>
 </div>
 {% endblock %}
