@@ -1,6 +1,6 @@
 # format_poem.py
 # David Prager Branner
-# 20140304
+# 20140304, works
 
 import re
 import pprint
