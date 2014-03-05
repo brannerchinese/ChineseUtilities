@@ -56,6 +56,7 @@ def rotate_poem(poem):
     return rotated
 
 def make_html_table(rotated):
+    """"""
     formatted = '<table' + '\n'.join(
             ['\n    <tr>\n      ' + '\n      '.join(
                 ['<td>' + str(char) + '</td>' for char in line]
