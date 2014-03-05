@@ -1,10 +1,12 @@
 # app5.py
 # David Prager Branenr
-# 20140303
+# 20140304, works
 
 """Basic Flask application to process Chinese poem."""
 
-from flask import Flask, render_template, redirect, session
+import format_poem
+
+from flask import Flask, render_template, redirect, session, Markup
 from flask.ext.bootstrap import Bootstrap
 from flask.ext.wtf import Form
 from wtforms import TextField, TextAreaField, SubmitField
@@ -30,7 +32,7 @@ def index():
 
 @app.route('/format')
 def results():
-    session['input_poem'] = format_poem(session['input_poem'])
+    session['input_poem'] = Markup(format_poem(session['input_poem']))
     # process text
     return render_template('results.html')
 
