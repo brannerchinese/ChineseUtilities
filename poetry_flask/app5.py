@@ -32,9 +32,9 @@ def index():
 
 @app.route('/format')
 def results():
-    session['input_poem'] = Markup(format_poem(session['input_poem']))
+    poem_lists = format_poem(session['input_poem'])
     # process text
-    return render_template('results.html')
+    return render_template('results.html', poem_lists=poem_lists)
 
 if __name__ == ('__main__'):
     app.run(debug=True)

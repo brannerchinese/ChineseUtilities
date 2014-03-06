@@ -8,9 +8,20 @@
 {% endblock %}
 
 {% block content %}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <div class="container">
   <h2>Formatted poem</h2>
-    {{session['input_poem']}}
+  <table>
+    {% for row in poem_lists %}
+    {% set r = loop.index0 %}
+    <tr>
+      {% for char in row %}
+      <td id="{{r ~ '-' ~ loop.index0}}">{{ char }}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+  <!--    {{session['input_poem']}} -->
     <br><br><a href="{{url_for('index')}}">Return to input page.</a>
 </div>
 {% endblock %}
