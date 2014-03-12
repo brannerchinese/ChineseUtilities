@@ -28,11 +28,12 @@ def format_poem(poem, stanza_len = 8, to_strip=None):
             processed.append(section)
     return processed
 
-def clean_poem(poem, to_strip=['《', '》', '“', '”']):
+def clean_poem(poem, to_break_at=None, to_strip=['《', '》', '“', '”']):
     """Strip whitespace from string, return as trebly nested char-list."""
     if to_strip == None:
         to_strip = []
-    to_break_at = [r'。', r'，', r'？', r'！', r'：', r'○', r'；']
+    if to_break_at == None:
+        to_break_at = [r'。', r'，', r'？', r'！', r'：', r'○', r'；']
     # Break into any stanzas.
     stanzas = []
     for stanza in poem.split('\n\n'):
