@@ -59,23 +59,20 @@ def clean_poem(poem, to_strip=['《', '》', '“', '”']):
 def regularize_line_length(section):
     """Pad all lines to make them as long as the longest line; return list."""
     max_len = max(len(line) for line in section)
-#    max_len = max([len(line) for section in poem for line in section])
-#    to_return = [line + ['\u3000'] * (max_len - len(line)) for section in
-#            F.clean_poem(tsyr1) for line in section]
     regularized = [
             line + ['\u3000'] * (max_len - len(line)) for line in section]
     return regularized
 
-def rotate_lines(poem):
+def rotate_lines(section):
     """Rotate each eight-line list-of-lists and return a list of those."""
     # Create empty matrix.
-    rows = len(poem) # this many column-elements
-    cols = len(poem[0]) # in each of this many row-lists
+    rows = len(section) # this many column-elements
+    cols = len(section[0]) # in each of this many row-lists
     rotated = [
                 [[] for i in range(rows)]
                     for i in range(cols)]
     # Populate
     for row in range(rows):
         for char in range(cols):
-            rotated[char][rows - 1 - row] = poem[row][char]
+            rotated[char][rows - 1 - row] = section[row][char]
     return rotated
