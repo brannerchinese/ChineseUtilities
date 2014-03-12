@@ -23,6 +23,6 @@ On-going project to assist prosodic study of Chinese poetry.
 
  * `rotate_lines(section)`: Rotate each section for display in columns.
 
-**Test suite** in `test/`. Run using `py.test test`.
+**Test suite** in `test/`. Run using `py.test test`. Poetry and other test-structures are in a discrete file `data_for_testing_format_poem.py`.
 
 [end]
