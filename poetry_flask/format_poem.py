@@ -61,7 +61,7 @@ def regularize_line_length(section):
     """Pad all lines to make them as long as the longest line; return list."""
     max_len = max(len(line) for line in section)
     regularized = [
-            line + ['\u3000'] * (max_len - len(line)) for line in section]
+            line + [r'\u3000'] * (max_len - len(line)) for line in section]
     return regularized
 
 def rotate_lines(section):
