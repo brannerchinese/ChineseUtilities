@@ -21,8 +21,8 @@ On-going project to assist prosodic study of Chinese poetry.
    1. find the longest line in the section;
    1. add ideographic space `'\u3000'` to the end of any lines shorted than that maximum so that all lines are the same length.
 
- * `rotate_lines(section)`
+ * `rotate_lines(section)`: Rotate each section for display in columns.
 
-**Test suite** in `test/`.
+**Test suite** in `test/`. Run using `py.test test`.
 
 [end]
