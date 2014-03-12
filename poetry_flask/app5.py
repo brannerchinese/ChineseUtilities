@@ -1,6 +1,6 @@
 # app5.py
-# David Prager Branenr
-# 20140304, works
+# David Prager Branner
+# 20140312
 
 """Basic Flask application to process Chinese poem."""
 

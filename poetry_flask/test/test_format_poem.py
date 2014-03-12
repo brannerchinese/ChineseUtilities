@@ -1,102 +1,12 @@
 # test_format_poem.py
 # David Prager Branner
-# 20140304
-# DOES NOT WORK — persistent encoding problems:
-#   assert [['\xe6', '\x...d', ...], ...] == [['\xe6\xbd\xa...8', ...], ...]
-#   etc.
+# 20140312, works
+
+"""Test the basic functions for preparing a Chinese poem for display."""
 
 import format_poem as F
-
-# Prepare poems for testing.
-shy1 = '潯陽江 頭夜送客，楓葉\t荻花\u00a0秋瑟瑟。\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u200b\u200c\u205f\n主人下馬客在船，舉酒欲飲無管絃。\n醉不成歡慘將別，別時茫茫江浸月。\n忽聞水上琵琶聲，主人忘歸客不發。\n尋聲暗問彈者誰，琵琶聲停欲語遲。\n移船相近邀相見，添酒回燈重開宴。' 
-cl_shy1 = [
-         ['潯', '陽', '江', '頭', '夜', '送', '客'],
-         ['楓', '葉', '荻', '花', '秋', '瑟', '瑟'],
-         ['主', '人', '下', '馬', '客', '在', '船'],
-         ['舉', '酒', '欲', '飲', '無', '管', '絃'],
-         ['醉', '不', '成', '歡', '慘', '將', '別'],
-         ['別', '時', '茫', '茫', '江', '浸', '月'],
-         ['忽', '聞', '水', '上', '琵', '琶', '聲'],
-         ['主', '人', '忘', '歸', '客', '不', '發'],
-         ['尋', '聲', '暗', '問', '彈', '者', '誰'],
-         ['琵', '琶', '聲', '停', '欲', '語', '遲'],
-         ['移', '船', '相', '近', '邀', '相', '見'],
-         ['添', '酒', '回', '燈', '重', '開', '宴']]
-r_shy1 = [['添', '移', '琵', '尋', '主', '忽', '別', '醉', '舉', '主', '楓', '潯'], ['酒', '船', '琶', '聲', '人', '聞', '時', '不', '酒', '人', '葉', '陽'], ['回', '相', '聲', '暗', '忘', '水', '茫', '成', '欲', '下', '荻', '江'], ['燈', '近', '停', '問', '歸', '上', '茫', '歡', '飲', '馬', '花', '頭'], ['重', '邀', '欲', '彈', '客', '琵', '江', '慘', '無', '客', '秋', '夜'], ['開', '相', '語', '者', '不', '琶', '浸', '將', '管', '在', '瑟', '送'], ['宴', '見', '遲', '誰', '發', '聲', '月', '別', '絃', '船', '瑟', '客']]
-
-tsyr1 = '''昨夜雨疏風驟，濃睡不消殘酒。試問卷簾人，卻道海棠依舊。知否？知否？應是綠肥紅瘦。'''
-cl_tsyr1 = [['昨', '夜', '雨', '疏', '風', '驟'],
-         ['濃', '睡', '不', '消', '殘', '酒'],
-         ['試', '問', '卷', '簾', '人'],
-         ['卻', '道', '海', '棠', '依', '舊'],
-         ['知', '否'],
-         ['知', '否'],
-         ['應', '是', '綠', '肥', '紅', '瘦']]
-r_tsyr1 = [
-         ['應', '知', '知', '卻', '試', '濃', '昨'],
-         ['是', '否', '否', '道', '問', '睡', '夜'],
-         ['綠', '\u3000', '\u3000', '海', '卷', '不', '雨'],
-         ['肥', '\u3000', '\u3000', '棠', '簾', '消', '疏'],
-         ['紅', '\u3000', '\u3000', '依', '人', '殘', '風'],
-         ['瘦', '\u3000', '\u3000', '舊', '\u3000', '酒', '驟']]
-
-tsyr2 = '''無言獨上西樓，月如鉤。寂寞梧桐深院鎖清秋。剪不斷，理還亂，是離愁。別是一般滋味在心頭。 '''
-cl_tsyr2 = [['無', '言', '獨', '上', '西', '樓'],
-         ['月', '如', '鉤'],
-         ['寂', '寞', '梧', '桐', '深', '院', '鎖', '清', '秋'],
-         ['剪', '不', '斷'],
-         ['理', '還', '亂'],
-         ['是', '離', '愁'],
-         ['別', '是', '一', '般', '滋', '味', '在', '心', '頭']]
-r_tsyr2 = [
-         ['別', '是', '理', '剪', '寂', '月', '無'],
-         ['是', '離', '還', '不', '寞', '如', '言'],
-         ['一', '愁', '亂', '斷', '梧', '鉤', '獨'],
-         ['般', '\u3000', '\u3000', '\u3000', '桐', '\u3000', '上'],
-         ['滋', '\u3000', '\u3000', '\u3000', '深', '\u3000', '西'],
-         ['味', '\u3000', '\u3000', '\u3000', '院', '\u3000', '樓'],
-         ['在', '\u3000', '\u3000', '\u3000', '鎖', '\u3000', '\u3000'],
-         ['心', '\u3000', '\u3000', '\u3000', '清', '\u3000', '\u3000'],
-         ['頭', '\u3000', '\u3000', '\u3000', '秋', '\u3000', '\u3000']]
-
-tsyr3 = '''眠。月影穿窗白玉錢。無人弄。移過枕函邊'''
-cl_tsyr3 = [['眠'],
-         ['月', '影', '穿', '窗', '白', '玉', '錢'],
-         ['無', '人', '弄'],
-         ['移', '過', '枕', '函', '邊']]
-r_tsyr3 = [['移', '無', '月', '眠'], ['過', '人', '影', '\u3000'], ['枕', '弄',
-'穿', '\u3000'], ['函', '\u3000', '窗', '\u3000'], ['邊', '\u3000', '白',
-'\u3000'], ['\u3000', '\u3000', '玉', '\u3000'], ['\u3000', '\u3000', '錢',
-'\u3000']]
-
-tsyr4 = '''\n\n春到長門春草青，紅梅些子破，未開勻。碧雲籠碾玉成塵，留曉夢，驚破一甌春。\n\n花影壓重門，疏簾鋪淡月，好黃昏。二年三度負東君，歸來也，著意過今春。\n\n\n'''
-cl_tsyr4 = [
-        ['春', '到', '長', '門', '春', '草', '青'],
-        ['紅', '梅', '些', '子', '破'],
-        ['未', '開', '勻'],
-        ['碧', '雲', '籠', '碾', '玉', '成', '塵'],
-        ['留', '曉', '夢'],
-        ['驚', '破', '一', '甌', '春'],
-        ['花', '影', '壓', '重', '門'],
-        ['疏', '簾', '鋪', '淡', '月'],
-        ['好', '黃', '昏'],
-        ['二', '年', '三', '度', '負', '東', '君'],
-        ['歸', '來', '也'],
-        ['著', '意', '過', '今', '春']]
-r_tsyr4 = [
-     ['著', '歸', '二', '好', '疏', '花', '驚', '留', '碧', '未', '紅', '春'],
-     ['意', '來', '年', '黃', '簾', '影', '破', '曉', '雲', '開', '梅', '到'],
-     ['過', '也', '三', '昏', '鋪', '壓', '一', '夢', '籠', '勻', '些', '長'],
-     ['今', '\u3000', '度', '\u3000', '淡', '重', '甌', '\u3000', '碾', '\u3000', '子', '門'],
-     ['春', '\u3000', '負', '\u3000', '月', '門', '春', '\u3000', '玉', '\u3000', '破', '春'],
-     ['\u3000', '\u3000', '東', '\u3000', '\u3000', '\u3000', '\u3000', '\u3000', '成', '\u3000', '\u3000', '草'],
-     ['\u3000', '\u3000', '君', '\u3000', '\u3000', '\u3000', '\u3000', '\u3000', '塵', '\u3000', '\u3000', '青']]
-
-# Lists of poems and their output for iterating through.
-poem_list = [shy1, tsyr1, tsyr2, tsyr3, tsyr4]
-rotation_list = [r_shy1, r_tsyr1, r_tsyr2, r_tsyr3, r_tsyr4]
-cleaned_list = [cl_shy1, cl_tsyr1, cl_tsyr2, cl_tsyr3, cl_tsyr4]
-tsyr_list = [tsyr1, tsyr2, tsyr3, tsyr4]
+from data_for_testing_format_poem import (
+        poem_list, cleaned_list, rotation_list, format_list)
 
 def test_clean_01():
     for poem, cleaned in zip(poem_list, cleaned_list):
@@ -104,21 +14,32 @@ def test_clean_01():
 
 def test_regularize_line_length_01():
     """Test whether all lines now have the same length."""
-    for tsyr in tsyr_list:
-        poem = F.clean_poem(tsyr)
-        poem = F.regularize_line_length(poem)
-        lengths = [len(line) for line in poem]
+    for poem in poem_list:
+        poem = F.clean_poem(poem)
+        section = F.regularize_line_length(poem[0])
+        lengths = [len(line) for line in section]
         assert max(lengths) == min(lengths)
 
 def test_rotate_01():
-    """Test whether rotated poem matches expected form."""
+    """Test whether rotated poem-section matches expected form."""
     for poem, rotation in zip(poem_list, rotation_list):
         poem = F.clean_poem(poem)
-        poem = F.regularize_line_length(poem)
-        assert F.rotate_poem(poem) == rotation
+        section = F.regularize_line_length(poem[0])
+        assert F.rotate_lines(section) == rotation
 
 def test_rotate_02():
     """Test whether four consecutive rotations bring us back to the original."""
     for poem in poem_list:
-        (F.regularize_line_length(F.clean_poem(tsyr1)) ==
-                F.rotate_poem(F.rotate_poem(F.rotate_poem(F.rotate_poem(F.regularize_line_length(F.clean_poem(tsyr1)))))))
+        (F.regularize_line_length(F.clean_poem(poem)) ==
+                F.rotate_lines(
+                        F.rotate_lines(F.rotate_lines(F.rotate_lines(
+                                F.regularize_line_length(F.clean_poem(poem))))
+                        )
+                )
+        )
+
+def test_format_01():
+    """Test full formatting function."""
+    for poem, formatted in zip(poem_list, format_list):
+        assert F.format_poem(poem) == formatted
+    
