@@ -9,6 +9,8 @@ Utilities to help me with Chinese-language work and other NLP tasks
  1. `statistics/`: Little programs to calculate statistical tests.
 
  1. `poetry_flask/`: The beginnings of a web application to assist the study of medieval Chinese prosody.
+
+ 1. `hanamin_fonts/`: Copy of the HANAMIN fonts for use with this project.
  
 [end]
 
