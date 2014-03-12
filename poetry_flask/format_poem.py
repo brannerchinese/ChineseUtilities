@@ -4,9 +4,9 @@
 
 """Divide a poem into stanzas or sections and rotate each.
 
-Stanzas are those delimited by two \n.
+Stanzas are those delimited by the user using two \n.
 
-Sections are eight lines long.
+Sections are eight lines long, and divided automatically here.
 """
 
 import re
