@@ -32,9 +32,10 @@ def index():
 
 @app.route('/format')
 def results():
-    poem_lists = format_poem(session['input_poem'])
+    processed_poem = format_poem(session['input_poem'])
+    print('in app5:', processed_poem)
     # process text
-    return render_template('results.html', poem_lists=poem_lists)
+    return render_template('results.html', processed_poem=processed_poem)
 
 if __name__ == ('__main__'):
     app.run(debug=True)
