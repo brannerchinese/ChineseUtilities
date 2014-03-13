@@ -25,7 +25,12 @@ def format_poem(poem, stanza_len=10, to_strip=None):
             stanza = stanza[stanza_len:]
             section = regularize_line_length(section)
             # add function call here regularize section-length, too?
-            print('length this section:', len(section))
+            padding_needed = stanza_len - len(section)
+            print('padding needed:', padding_needed, end='\n\n\n')
+            if padding_needed:
+#                pprint.pprint(section)
+                section = pad_short_section(section, padding_needed)
+#                pprint.pprint(section)
             section = rotate_lines(section)
             processed.append(section)
     return processed
@@ -73,6 +78,12 @@ def regularize_line_length(section):
     regularized = [
             line + ['\u3000'] * (max_len - len(line)) for line in section]
     return regularized
+
+def pad_short_section(section, padding_needed):
+    """Section has lines of all-same length; add `padding_needed` more."""
+    section.extend(
+            [['\u3000'] * len(section[0]) for i in range(padding_needed)])
+    return section
 
 def rotate_lines(section):
     """Rotate each eight-line list-of-lists and return a list of those."""
