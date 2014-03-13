@@ -1,6 +1,6 @@
 # format_poem.py
 # David Prager Branner
-# 20140312, works
+# 20140313, works
 
 """Divide a poem into stanzas or sections and rotate each.
 
@@ -24,13 +24,10 @@ def format_poem(poem, stanza_len=10, to_strip=None):
             section = stanza[0:stanza_len]
             stanza = stanza[stanza_len:]
             section = regularize_line_length(section)
-            # add function call here regularize section-length, too?
+            # Regularize section-length.
             padding_needed = stanza_len - len(section)
-            print('padding needed:', padding_needed, end='\n\n\n')
             if padding_needed:
-#                pprint.pprint(section)
                 section = pad_short_section(section, padding_needed)
-#                pprint.pprint(section)
             section = rotate_lines(section)
             processed.append(section)
     return processed
