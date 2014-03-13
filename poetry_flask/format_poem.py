@@ -16,8 +16,10 @@ import math
 def format_poem(poem, stanza_len=10, to_strip=None):
     """Format a Chinese poem. Assume no punctuation, lines are \n-separated."""
     stanzas = clean_poem(poem)
-    processed = []
+    processed_poem = []
+    print(len(stanzas))
     for stanza in stanzas:
+        processed_section = []
         n_secs = math.ceil(len(stanza) / stanza_len)
         for i in range(n_secs):
             # Create sections for single-screen display.
@@ -29,8 +31,10 @@ def format_poem(poem, stanza_len=10, to_strip=None):
             if padding_needed:
                 section = pad_short_section(section, padding_needed)
             section = rotate_lines(section)
-            processed.append(section)
-    return processed
+            processed_section.append(section)
+        processed_poem.extend(processed_section)
+        print('in format_poem:', processed_poem)
+    return processed_poem
 
 def clean_poem(poem, to_break_at=None, to_strip=['《', '》', '“', '”']):
     """Strip whitespace from string, return as trebly nested char-list."""
@@ -48,6 +52,7 @@ def clean_poem(poem, to_break_at=None, to_strip=['《', '》', '“', '”']):
                 r'、', r'﹅', r'﹆', r'﹑', r'､']
     # Break into any stanzas.
     stanzas = []
+    print(poem.split('\n\n'))
     for stanza in poem.split('\n\n'):
         if stanza == []:
             continue

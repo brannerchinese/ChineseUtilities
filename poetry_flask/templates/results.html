@@ -1,4 +1,4 @@
-<!-- 20140312-->
+<!-- 20140313-->
 {% extends "bootstrap/base.html" %}
 {% block title %}Formatted poem{% endblock %}
 
@@ -12,7 +12,7 @@
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <div class="container">
   <h2>Formatted poem</h2>
-  {% for section in poem_lists %}
+  {% for section in processed_poem %}
     <table>
       {% for row in section %}
       {% set r = loop.index0 %}
