@@ -24,6 +24,7 @@ def format_poem(poem, stanza_len=8, to_strip=None):
             section = stanza[0:stanza_len]
             stanza = stanza[stanza_len:]
             section = regularize_line_length(section)
+            # add function call here regularize section-length, too?
             section = rotate_lines(section)
             processed.append(section)
     return processed
@@ -33,7 +34,15 @@ def clean_poem(poem, to_break_at=None, to_strip=['《', '》', '“', '”']):
     if to_strip == None:
         to_strip = []
     if to_break_at == None:
-        to_break_at = [r'。', r'，', r'？', r'！', r'：', r'○', r'；']
+        to_break_at = [
+                r'。', r'○', r'｡', r'⸰',
+                r'・',
+                r'，', r',', r'‚', r'﹐',
+                r'？', r'?', r'﹖',
+                r'！', r'!', r'﹗',
+                r'：', r':', r'﹕',
+                r'；', r';', r';', r'﹔',
+                r'、', r'﹅', r'﹆', r'﹑', r'､']
     # Break into any stanzas.
     stanzas = []
     for stanza in poem.split('\n\n'):
@@ -61,7 +70,7 @@ def regularize_line_length(section):
     """Pad all lines to make them as long as the longest line; return list."""
     max_len = max(len(line) for line in section)
     regularized = [
-            line + [r'\u3000'] * (max_len - len(line)) for line in section]
+            line + ['\u3000'] * (max_len - len(line)) for line in section]
     return regularized
 
 def rotate_lines(section):
