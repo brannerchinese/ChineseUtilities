@@ -41,5 +41,4 @@ def test_rotate_02():
 def test_format_01():
     """Test full formatting function."""
     for poem, formatted in zip(poem_list, format_list):
-        assert F.format_poem(poem) == formatted
-    
+        assert F.format_poem(poem, stanza_len=8) == formatted
