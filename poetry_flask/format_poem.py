@@ -25,6 +25,7 @@ def format_poem(poem, stanza_len=8, to_strip=None):
             stanza = stanza[stanza_len:]
             section = regularize_line_length(section)
             # add function call here regularize section-length, too?
+            print('length this stanza:', len(section))
             section = rotate_lines(section)
             processed.append(section)
     return processed
