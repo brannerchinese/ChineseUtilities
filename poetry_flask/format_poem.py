@@ -13,7 +13,7 @@ import re
 import pprint
 import math
 
-def format_poem(poem, stanza_len=8, to_strip=None):
+def format_poem(poem, stanza_len=10, to_strip=None):
     """Format a Chinese poem. Assume no punctuation, lines are \n-separated."""
     stanzas = clean_poem(poem)
     processed = []
@@ -25,7 +25,7 @@ def format_poem(poem, stanza_len=8, to_strip=None):
             stanza = stanza[stanza_len:]
             section = regularize_line_length(section)
             # add function call here regularize section-length, too?
-            print('length this stanza:', len(section))
+            print('length this section:', len(section))
             section = rotate_lines(section)
             processed.append(section)
     return processed
