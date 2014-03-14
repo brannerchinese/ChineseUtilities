@@ -11,7 +11,7 @@
 {% block content %}
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <div class="container">
-  <h2>Formatted poem</h2>
+  <h2>Title goes here</h2>
     {% for section in processed_poem %}
       <table class="centered">
         {% for row in section %}
@@ -23,7 +23,7 @@
         </tr>
         {% endfor %}
       </table>
-      <br />
+      <br /><br />
     {% endfor %}
   <!--    {{session['input_poem']}} -->
     <br><br><a href="{{url_for('index')}}">Return to input page.</a>

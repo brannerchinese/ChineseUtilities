@@ -6,7 +6,7 @@
 
 Stanzas are those delimited by the user using two \n.
 
-Sections are eight lines long, and divided automatically here.
+Sections are ten lines long, and divided automatically here.
 """
 
 import re
