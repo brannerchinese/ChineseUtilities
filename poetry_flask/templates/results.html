@@ -13,7 +13,7 @@
 <div class="container">
   <h2>Formatted poem</h2>
     {% for section in processed_poem %}
-      <table>
+      <table class="centered">
         {% for row in section %}
         {% set r = loop.index0 %}
         <tr>
