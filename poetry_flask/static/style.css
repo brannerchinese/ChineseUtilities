@@ -3,9 +3,10 @@ h2 {
 }
 
 td {
-  padding:0 30px 0 0;
+  padding:0 0 0 30px;
 }
 
 table.centered {
   margin: auto;
+  border: 1px solid #000;
 }
