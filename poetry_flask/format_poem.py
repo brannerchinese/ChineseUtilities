@@ -33,7 +33,6 @@ def format_poem(poem, stanza_len=10, to_strip=None):
             section = rotate_lines(section)
             processed_section.append(section)
         processed_poem.extend(processed_section)
-        print('in format_poem:', processed_poem)
     return processed_poem
 
 def clean_poem(poem, to_break_at=None, to_strip=['《', '》', '“', '”']):
@@ -52,7 +51,10 @@ def clean_poem(poem, to_break_at=None, to_strip=['《', '》', '“', '”']):
                 r'、', r'﹅', r'﹆', r'﹑', r'､']
     # Break into any stanzas.
     stanzas = []
-    print(poem.split('\n\n'))
+    # Input from web form may contain \r\n where we expect \n.
+    poem = re.sub('\r\n', '\n', poem)
+    # In any case we want to reduce all runs of \n to \n\n only, to split next..
+    poem = re.sub('\n\n+', '\n\n', poem)
     for stanza in poem.split('\n\n'):
         if stanza == []:
             continue

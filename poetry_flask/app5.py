@@ -1,6 +1,6 @@
 # app5.py
 # David Prager Branner
-# 20140312
+# 20140313
 
 """Basic Flask application to process Chinese poem."""
 
@@ -33,8 +33,6 @@ def index():
 @app.route('/format')
 def results():
     processed_poem = format_poem(session['input_poem'])
-    print('in app5:', processed_poem)
-    # process text
     return render_template('results.html', processed_poem=processed_poem)
 
 if __name__ == ('__main__'):

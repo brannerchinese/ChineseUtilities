@@ -12,19 +12,19 @@
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <div class="container">
   <h2>Formatted poem</h2>
-  {% for section in processed_poem %}
-    <table>
-      {% for row in section %}
-      {% set r = loop.index0 %}
-      <tr>
-        {% for char in row %}
-        <td id="{{r ~ '-' ~ loop.index0}}">{{ char }}</td>
+    {% for section in processed_poem %}
+      <table>
+        {% for row in section %}
+        {% set r = loop.index0 %}
+        <tr>
+          {% for char in row %}
+          <td id="{{r ~ '-' ~ loop.index0}}">{{ char }}</td>
+          {% endfor %}
+        </tr>
         {% endfor %}
-      </tr>
-      {% endfor %}
-    </table>
-    <hr />
-  {% endfor %}
+      </table>
+      <hr />
+    {% endfor %}
   <!--    {{session['input_poem']}} -->
     <br><br><a href="{{url_for('index')}}">Return to input page.</a>
 </div>
