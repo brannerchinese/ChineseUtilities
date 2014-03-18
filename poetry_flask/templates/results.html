@@ -1,4 +1,4 @@
-<!-- 20140313-->
+<!-- 20140318-->
 {% extends "bootstrap/base.html" %}
 {% block title %}Formatted poem{% endblock %}
 
@@ -13,18 +13,33 @@
 <div class="container">
   <h2>Author, Title go here</h2>
     {% for section in processed_poem %}
-      <table class="centered">
+      <form role="form">
+      <table class="jongjian">
         {% for row in section %}
         {% set r = loop.index0 %}
         <tr>
           {% for char in row %}
-          <td id="{{r ~ '-' ~ loop.index0}}">{{ char }}</td>
+          {% set char_id = r ~ '-' ~ loop.index0 %}
+          <td>
+            <div class="checkbox">
+              {% for reading in readings %}
+              <label>
+                <input name="{{ char_id ~ '-' ~ reading }}" type="checkbox">
+                {{ reading }}<br />
+               </label>
+              {% endfor %}
+            </div>
+          </td>
+          <td id="{{ char_id }}">{{ char }}</td>
           {% endfor %}
         </tr>
         {% endfor %}
       </table>
       <br /><br />
     {% endfor %}
+    <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
   <!--    {{session['input_poem']}} -->
     <br><br><a href="{{url_for('index')}}">Return to input page.</a>
 </div>

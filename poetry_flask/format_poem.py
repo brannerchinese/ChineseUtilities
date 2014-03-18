@@ -13,7 +13,7 @@ import re
 import pprint
 import math
 
-def format_poem(poem, stanza_len=10, to_strip=None):
+def format_poem(poem, stanza_len=4, to_strip=None):
     """Format a Chinese poem. Assume no punctuation, lines are \n-separated."""
     stanzas = clean_poem(poem)
     processed_poem = []

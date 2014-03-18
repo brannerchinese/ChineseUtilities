@@ -3,11 +3,18 @@ h2 {
 }
 
 td {
-  padding:0 0 0 30px;
+  padding: 0 5px 0 5px;
 }
 
-table.centered {
+td:last-child {
+  padding: 0 10px 0 5px;
+}
+
+td:first-child {
+  padding: 0 5px 0 10px
+}
+
+table.jongjian {
   margin: auto;
-  padding: 5px;
   border: 1px solid #000;
 }
