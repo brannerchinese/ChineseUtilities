@@ -1,6 +1,6 @@
 # app5.py
 # David Prager Branner
-# 20140313
+# 20140318
 
 """Basic Flask application to process Chinese poem."""
 
@@ -33,7 +33,11 @@ def index():
 @app.route('/format')
 def results():
     processed_poem = format_poem(session['input_poem'])
-    return render_template('results.html', processed_poem=processed_poem)
+    # The readings below are samples. Ultimately we want them populated from
+    # database and presented in a standard order.
+    readings = ['tshreingH-2a', 'tshyek-3']
+    return render_template('results.html', processed_poem=processed_poem,
+            readings=readings)
 
 if __name__ == ('__main__'):
     app.run(debug=True)
