@@ -12,6 +12,7 @@ from flask.ext.wtf import Form
 from wtforms import TextField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired
 from format_poem import format_poem
+import lookup_readings
 
 class PoemInputForm(Form):
     poem = TextAreaField('poem', validators=[DataRequired()])
