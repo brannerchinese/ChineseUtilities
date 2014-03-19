@@ -1,4 +1,4 @@
-#! ../v_env3/bin/python3
+#!/usr/bin/env python3
 # poetry_transcription_webapp.py
 # David Prager Branner
 # 20140318
