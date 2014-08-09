@@ -5,8 +5,6 @@
 
 """Basic Flask application to process Chinese poem."""
 
-import format_poem
-
 from flask import Flask, render_template, redirect, session, Markup
 from flask.ext.bootstrap import Bootstrap
 from flask.ext.wtf import Form
@@ -18,7 +16,6 @@ import lookup_readings
 class PoemInputForm(Form):
     poem = TextAreaField('poem', validators=[DataRequired()])
     submit = SubmitField('submit')
-
 
 app = Flask(__name__) # __name__ because this file is self-contained.
 app.config['SECRET_KEY'] = 'secretsecret'

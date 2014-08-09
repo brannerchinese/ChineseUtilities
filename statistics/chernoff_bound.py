@@ -1,3 +1,5 @@
+import math as M
+
 def figure_confidence(matches, trials, exp_avg = 0.49672, round_to=2):
     mu = exp_avg * trials
     epsilon = abs(matches - mu) / float(mu)
