@@ -1,0 +1,32 @@
+[
+  [
+    section_title, 
+    numbered,
+    notes,
+    [
+      {
+        'text_type': string,
+        'prosodic_type': string,
+        'line': string,
+        'numbered': boolean
+        'transcription': 
+          [
+            string, 
+          ],
+        'translation': string,
+        'footnotes_line' 
+          [
+            index: string,
+          ],
+        'footnotes_translation' 
+          [
+            index: string,
+          ],
+        'footnotes_transcription' 
+          [
+            index: string,
+          ],
+      }
+    ]
+  ],
+]
