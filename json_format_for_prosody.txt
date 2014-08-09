@@ -12,10 +12,10 @@
           'numbered': boolean
           'transc': [string, ],
           'transl': string,
-          'footnotes_line': string,
+          'footnotes_textual': string,
           'footnotes_transl': string,
           'footnotes_transc': string,
-        }
+        },
       ]
     }
   },
