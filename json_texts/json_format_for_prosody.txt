@@ -1,0 +1,24 @@
+[
+  {
+    'section_title': string, 
+    'section': {
+      'numbered': boolean,
+      'notes': string,
+      'lines': [
+        {
+          'text_type': string,
+          'prosodic_type': string,
+          'line': string,
+          'numbered': boolean
+          'transc': [string, ...],
+          'transl': string,
+          'footnotes_textual': string,
+          'footnotes_transl': string,
+          'footnotes_transc': string,
+        },
+        {...}
+      ]
+    }
+  },
+  {...}
+]
