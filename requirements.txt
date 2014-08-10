@@ -2,10 +2,11 @@ Flask==0.10.1
 Flask-Bootstrap==3.1.1.2
 Flask-WTF==0.9.4
 Jinja2==2.7.2
-MarkupSafe==0.18
+MarkupSafe==0.19
 WTForms==1.0.5
 Werkzeug==0.9.4
-ipython==1.2.1
+gnureadline==6.3.3
+ipython==2.2.0
 itsdangerous==0.23
 py==1.4.20
 pytest==2.5.2
