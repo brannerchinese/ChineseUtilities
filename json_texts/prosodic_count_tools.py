@@ -8,10 +8,10 @@
 import re
 
 class Counter():
-    def __init__(self, t):
-        self.t = t
+    def __init__(self, text):
+        self.text = text
         self.count = 0
-        self.tones = {
+        self.textones = {
                 'pyng': '[^ptkQH]-',
                 'shaang': '[Q]-',
                 'chiuh': '[H]-',
@@ -22,7 +22,7 @@ class Counter():
     def count_sylls(self, feature, prosodic_type='rhyme'):
         """Return number of syllables of a specific type, as integer."""
         self.count = 0
-        for section in self.t:
+        for section in self.text:
             for line in section["section"]["lines"]:
                 if ("prosodic_type" in line and 
                         "transc" in line and
@@ -35,8 +35,8 @@ class Counter():
     def find_all_tones(self):
         """Return dictionary of all tone-counts, rhyming and non-rhyming."""
         all_tones = {
-                (tone, state): self.count_sylls(self.tones[tone], state) 
-                for tone in self.tones 
+                (tone, state): self.count_sylls(self.textones[tone], state) 
+                for tone in self.textones 
                 for state in self.states
                 }
         return all_tones
@@ -44,7 +44,7 @@ class Counter():
     def count_poetic_lines(self):
         """Return number of rhyme and nonrhyme lines, as integer."""
         self.count = 0
-        for section in self.t:
+        for section in self.text:
             for line in section["section"]["lines"]:
                 if (line["text_type"] == 'verse' and 
                         (line["prosodic_type"] == 'rhyme' or 

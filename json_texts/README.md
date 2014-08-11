@@ -19,7 +19,39 @@ H.store_data('', filename)
 
         ```
 import handle_files as H
-t = H.retrieve_data(filename)
+text = H.retrieve_data(filename)
         ```
+
+ 1. `prosodic_count_tools.py`:
+
+   1. First use `handle_files` to fetch a JSON-formatted text. Then instantiate `Counter` and use its methods on the text. The most important is `find_all_tones`:
+
+        ```
+In [1]: import handle_files as H
+In [2]: import prosodic_count_tools as P
+In [3]: text = H.retrieve_data(filename)
+In [4]: C = P.Counter(text)
+In [5]: C.find_all_tones()
+Out[5]: 
+{('pyng', 'nonrhyme'): 170,
+ ('pyng', 'rhyme'): 289,
+ ('ruh', 'rhyme'): 104,
+ ('chiuh', 'nonrhyme'): 97,
+ ('ruh', 'nonrhyme'): 76,
+ ('shaang', 'nonrhyme'): 70,
+ ('shaang', 'rhyme'): 116,
+ ('chiuh', 'rhyme'): 104}
+        ```
+
+   1. Another is `count_poetic_lines`
+
+        ```
+In [6]: C.count_poetic_lines()
+Out[6]: 1026
+        ```
+
+### To do
+
+ 1. Write `count_shanqwoei`.
 
 [end]
