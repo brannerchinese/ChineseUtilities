@@ -28,7 +28,6 @@ class Counter():
                         "transc" in line and
                         line["prosodic_type"] == prosodic_type and 
                         re.search(feature, line["transc"][-1])):
-    #                print(line["transc"][-1])
                     self.count += 1
         return self.count
     
@@ -49,12 +48,19 @@ class Counter():
                 if (line["text_type"] == 'verse' and 
                         (line["prosodic_type"] == 'rhyme' or 
                         line["prosodic_type"] == 'nonrhyme')):
-    #                print(line["transc"][-1])
                     self.count += 1
         return self.count
     
-    def count_shanqwoei(self):
+    def count_shanqwoei(self, section):
         # In a given section,
-        # decide the rhyming tone;
-        # count the cases of that tone in nonrhyme lines.
+        # call `self.name_rhyming_tone(section)` to decide the rhyming tone;
+        # If valid return value, count the cases of that tone in nonrhyme lines.
+        pass
+    
+    def name_rhyming_tone(self, section):
+        # In a given section,
+        # examine all the rhyming syllables.
+        # If they are a single tone, return it; if not, report error.
+        # QQQ to do: We should have an additional attribute of "lines" 
+        # for alternate transcriptions, for the purposes of shyeyunn.
         pass
