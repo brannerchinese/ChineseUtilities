@@ -34,6 +34,7 @@ def store_data(t, filename='ban_guh_hannshu_shiuhjuann_shiah.ignore'):
     os.remove('temp.ignore')
 
 def json_load(filename):
+    """Load JSON data from file."""
     with open(filename, 'r') as f:
         content = f.read()
         t = json.loads(content)
