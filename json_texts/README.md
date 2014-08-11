@@ -12,8 +12,10 @@
 
         ```
 import handle_files as H
-H.store_data('', filename)
+H.store_data(filename, text='')
         ```
+
+     The argument `text` should only be 
 
    1. To decrypt `filename`:
 
