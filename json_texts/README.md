@@ -54,7 +54,8 @@ Out[6]: 1026
 
 ### To do
 
- 1. Revise JSON schema toprovide an additional attribute of "lines" for alternate transcriptions, for the purposes of _shyeyunn_.
+ 1. Revise JSON schema to provide an additional attribute of "lines" for alternate transcriptions, for the purposes of _shyeyunn_.
+ 1. JSON schema is not yet in canonical form. See http://json-schema.org/example1.html.
  1. Write `name_rhyming_tone`.
  1. Write `count_shanqwoei`.
 
