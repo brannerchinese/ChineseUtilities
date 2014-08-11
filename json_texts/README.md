@@ -15,7 +15,7 @@ import handle_files as H
 H.store_data(filename, text='')
         ```
 
-     The argument `text` should only be 
+     The argument `text` should only be used if the text in question is not extracted from the named file.
 
    1. To decrypt `filename`:
 
