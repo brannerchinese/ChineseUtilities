@@ -13,7 +13,7 @@ def count_syllables(t, feature, prosodic_type='rhyme'):
                     "transc" in line and
                     line["prosodic_type"] == prosodic_type and 
                     re.search(feature, line["transc"][-1])):
-                print(line["transc"][-1])
+#                print(line["transc"][-1])
                 count += 1
     return count
 
@@ -42,7 +42,7 @@ def count_poetic_lines(t):
             if (line["text_type"] == 'verse' and 
                     (line["prosodic_type"] == 'rhyme' or 
                     line["prosodic_type"] == 'nonrhyme')):
-                print(line["transc"][-1])
+#                print(line["transc"][-1])
                 count += 1
         print('end of lines')
     return count
