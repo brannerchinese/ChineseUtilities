@@ -6,8 +6,8 @@
       "notes": "string",
       "lines": [
         {
-          "text_type": "string",
-          "prosodic_type": "string",
+          "text_type": {"enum": ["yunnwen", "prose", "pyanwen"]},
+          "prosodic_type": {"enum": ["rhyme", "nonrhyme"]},
           "line": "string",
           "numbered": "boolean"
           "transc": ["string", ...],

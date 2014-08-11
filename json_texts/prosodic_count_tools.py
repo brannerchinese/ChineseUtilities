@@ -45,7 +45,7 @@ class Counter():
         self.count = 0
         for section in self.text:
             for line in section["section"]["lines"]:
-                if (line["text_type"] == 'verse' and 
+                if (line["text_type"] == 'yunnwen' and 
                         (line["prosodic_type"] == 'rhyme' or 
                         line["prosodic_type"] == 'nonrhyme')):
                     self.count += 1

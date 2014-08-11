@@ -19,7 +19,7 @@ def retrieve_data(filename='ban_guh_hannshu_shiuhjuann_shiah.ignore.gpg'):
     os.remove('temp.ignore')
     return text
 
-def store_data(text, filename='ban_guh_hannshu_shiuhjuann_shiah.ignore'):
+def store_data(filename='ban_guh_hannshu_shiuhjuann_shiah.ignore', text=''):
     """Save and encrypt JSON file of working data."""
     if not text:
         text = json_load(filename)
