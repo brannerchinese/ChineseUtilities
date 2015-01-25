@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # convert_pinyin.py
 # David Prager Branner
-# 20150124
+# 20150125
 
 import os
 import gzip
@@ -33,6 +33,7 @@ def convert(filename):
         gz_filename = os.path.join('data', filename, 'index.xml.gz')
         with gzip.open(gz_filename, 'rb') as f:
             contents = f.read()
+#        print(contents[-1000:]) # debug-print statement
     else:
         # Not sure yet how to deal with the new version (v. 9 and later).
         sys.exit('File\n    {}\n    cannot be converted.'.format(filename))
@@ -40,16 +41,27 @@ def convert(filename):
         with open(filename, 'rb') as f:
             contents = f.read()
     diacritics = {
-            # Original mapping:
-            # '§': 'ǎ', '¶': 'ě', '•': 'ǐ', 'ª': 'ǒ', 'º': 'ǔ', '√': 'ǚ',
-            b'&#xA7;': b'&#x1CE;', b'&#xB6;': b'&#x11B;',
-            b'&#x2022;': b'&#x1D0;', b'&#xAA;': b'&#x1D2;',
-            b'&#xBA;': b'&#x1D4;', b'&#x221A;': b'&#x1DA;',
-            # Original mapping:
+            # Original mapping, five vowels tone 1:
             # '¡': 'ā', '™': 'ē', '£': 'ī', '¢': 'ō', '∞': 'ū'
             b'&#xA1;': b'&#x101;', b'&#x2122;': b'&#x113;',
             b'&#xA3;': b'&#x12B;', b'&#xA2;': b'&#x14D;',
-            b'&#x221E;': b'&#x16B;'}
+            b'&#x221E;': b'&#x16B;',
+            # Original mapping, five vowels tone 3:
+            # '§': 'ǎ', '¶': 'ě', '•': 'ǐ', 'ª': 'ǒ', 'º': 'ǔ',
+            b'&#xA7;': b'&#x1CE;', b'&#xB6;': b'&#x11B;',
+            b'&#x2022;': b'&#x1D0;', b'&#xAA;': b'&#x1D2;',
+            b'&#xBA;': b'&#x1D4;',
+            # Original mapping, u-umlaut:
+            # '∞': 'ǘ', '√': 'ǚ', 'π': 'ǜ'
+            b'&#x2248;': b'&#x1D8;', b'&#x221A;': b'&#x1DA;',
+            b'&#x3C0;': b'&#x1DC;',
+            # Note: five vowels, tones 2 and 4, were originally handled
+            # correctly in standard upper ASCII and so are the same as current
+            # Unicode.
+            #
+            # Note 2: I do not currently have a way to learn how ǖ or the
+            # capitalized vowels with diacritics were mapped.
+            }
     for k in diacritics:
         contents = re.sub(k, diacritics[k], contents)
     if old_style:
