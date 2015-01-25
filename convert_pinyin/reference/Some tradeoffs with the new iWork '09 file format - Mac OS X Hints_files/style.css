@@ -1,0 +1,1419 @@
+/* STYLESHEET FORMAT GUIDE *****************************************************
+
+  split the following sections:
+  - semantics (direct formatting for <td>, <a > etc
+  - classes (.whatever)
+  - common plugin CSS
+  - navbar
+  Within these sections, entries are to be strictly alphabetized.
+
+  SAMPLE:
+  .poll-vote,
+  .poll-vote-results {
+    background:transparent;
+    color:#000000;
+    font-size:smaller;
+  }
+
+  These are the rough rules:
+  - always put a ';' after the last entry
+  - always a linebreak before .
+  - always a linebreak after , ; { and }
+  - always a . before all classes
+  - two spaces indent
+  - no tabs
+  - no spaces after colons
+*/
+
+/* SEMANTICS ******************************************************************/
+
+body {
+  width:99%;
+  background:#FFFFFF;
+  color:#000033;
+  font:75% verdana,tahoma,helvetica,arial,sans-serif;
+  padding:5px 0px 0px 0px;
+  margin:0px auto;
+  padding-left:1px;
+  padding-right:1px;
+}
+blockquote {
+  text-align: justify;
+  background: #f4f4f4;
+  margin-left: 10px;
+  margin-right: 55px;
+  padding: 5px;
+  /*border-left: 3px double #8C8C8C;
+  border-right: 3px double #8C8C8C;*/
+  border: 1px dotted #8C8C8C;
+}
+fieldset {
+  margin-bottom:1em;
+}
+fieldset p {
+  padding:5px;
+  margin:0px;
+  margin-top:5px;
+  margin-bottom:0px;
+}
+fieldset legend {
+  font-size:0.9em;
+}
+form {
+  margin-top:5px;
+  margin-bottom:5px;
+}
+form div.notes p,
+form div small {
+  line-height:125%;
+}
+form div.notes ul {
+  margin:0px;
+  padding:0px;
+  padding-left:2px;
+}
+form div.notes ul li {
+  margin-left:15px;
+  list-style-position:outside;
+  padding-right:2px;
+}
+form fieldset div.notes {
+  float:right;
+  position:relative;
+  right:30px;
+  width:150px;
+  height:auto;
+  margin:0px 0px 10px 10px;
+  padding:5px;
+  border:1px solid #666666;
+  background-color:#ffffe1;
+  color:#666666;
+  font-size:.75em;
+}
+
+form fieldset div.notes h4 {
+  background-image:url(images/icon_info.png);
+  background-repeat:no-repeat;
+  background-position:top left;
+  padding:3px 0px 2px 27px;
+  border-width:0px 0px 1px 0px;
+  border-style:solid;
+  border-color:#666666;
+  color:#666666;
+  margin-bottom:5px;
+  margin-top:0px;
+  font-size:1.3em;
+}
+
+form fieldset div.notes p {
+  margin:0em 0em 1.2em 0em;
+  color:#666666;
+}
+
+form fieldset div.notes p.last {
+  margin:0em;
+  padding-bottom:5px;
+}
+form label {
+    font-weight:bold;
+}
+h1 {
+  font-size:125%;
+}
+h2 {
+  font-size:100%;
+}
+h3 {
+  font-size:100%;
+  margin:0px;
+}
+img {
+  border:0;
+}
+input {
+  font-size:.9em;
+}
+input,
+submit,
+td {
+  color:#000000;
+}
+table {
+  border:0px;
+}
+textarea {
+  color:#000000;
+  font-family:arial,verdana,tahoma,helvetica,sans-serif;
+  font-size:120%;
+}
+th {
+  color:#000000;
+  background-color:#DAE0ED;
+  font-weight:bold;
+  font-size:larger;
+  padding-left:3px;
+  text-align:left;
+}
+p {
+  margin-top:5px;
+}
+select {
+  color:#000000;
+  font-size:.9em;
+}
+
+/* CLASSES ********************************************************************/
+
+/* Admin lists ****************************************************************/
+.admin-menu-icon {
+  float:left;
+  padding:5px;
+}
+.admin-menu { /* the box around the menu */
+  padding:5px;
+  border:1px solid #EEEEEE;
+}
+.admin-menu-text { /* the text below the links */
+  padding:5px;
+}
+.admin-menu-item { /* a single link in the menu */
+  padding: 0px 5px 0px 5px;
+}
+.admin-list-table {
+  width:100%;
+  text-align:left;
+  border-spacing:1px;
+}
+.admin-list-table form {
+  margin:0px;
+}
+.admin-list-search {
+  text-align:center;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+.admin-list-field {
+  text-align:left;
+  padding-left:5px;
+  padding-right:5px;
+}
+.admin-list-headerfield {
+  text-align:left;
+  padding-left:5px;
+  padding-right:5px;
+  font-size:larger;
+}
+/* Menus in blocks *****************************************************************/
+.blocklist ul {
+  list-style:none;
+  padding:0px;
+  margin:0px;
+}
+/* general alignment classes **************************************************/
+.alignleft {
+  text-align:left;
+}
+.alignright {
+  text-align:right;
+}
+.aligncenter {
+  text-align:center;
+}
+.aligntop {
+  vertical-align:top;
+}
+.floatright {
+  float:right;
+}
+.floatleft {
+  float:left;
+}
+.clearboth {
+  clear:both;
+}
+/* clear floats by applying the clearfix class to float-encasing block !*******/
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  display: inline-block;
+}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+/* general formatting classes **************************************************/
+.b {
+  font-weight:bold;
+}
+.ext-link {
+  background-color: transparent;
+  background: url(./images/external.png) center right no-repeat;
+  background-attachment: scroll;
+  padding-right: 13px;
+}
+.ext-link-rtl {
+}
+.feed-link {
+  background-color: transparent;
+  background: url(./images/feed.png) center right no-repeat;
+  background-attachment: scroll;
+  padding: 2px 16px 2px 0px;
+}
+.feed-link-rtl {
+}
+.strike {
+  text-decoration: line-through;
+}
+/* Blocks *********************************************************************/
+.block-box-left,
+.block-box-right,
+.block-box {
+  color:#000066;
+  font-family: verdana,tahoma,helvetica,arial,sans-serif;
+  margin:5px 10px 15px 10px;
+}
+.block-box-left ul,
+.block-box-right ul {
+  /* do not indent lists in the blocks too much */
+  margin:0px;
+  padding-left:20px;
+  list-style: circle;
+}
+.block-bg-left,
+.block-bg-right {
+  border-top:1px solid #FFFFFF;
+}
+.block-bg-right {
+ width:356px;
+}
+.block-bg-S.Dak.ader {
+  /* this is making sure that the blocks have a minimum width */
+  background:transparent;
+  width:360px;
+  height:1px;
+}
+.block-content,
+.block-content-right,
+.block-content-left {
+  background:transparent;
+  color:#000000;
+  padding-bottom:2px;
+  padding-top:2px;
+  clear:both;
+}
+.block-content-left ul,
+.block-content-right ul,
+.block-content ul {
+  margin-top:0;
+  margin-bottom:0;
+  margin-left:16px;
+  padding-left:0;
+  border:none;
+}
+/*.block-divider {
+  background:#FFFFFF;
+  border-bottom:1px solid #F7F7F7;
+  border-top:1px solid #E7E7E7;
+  color:#000000;
+  padding-top:2px;
+}*/
+.block-divider-left {
+  border-top:1px solid #E7E7E7;
+  border-bottom:1px solid #FFFFFF;
+  width:90%;
+  margin:0 auto;
+  line-height:0px;
+}
+.block-divider-right {
+  border-top:1px solid #CCCCCC;
+  border-bottom:1px solid #FFFFFF;
+  width:90%;
+  margin:0 auto;
+  line-height:0px;
+}
+.block-featured-left {
+  background:#F7F7F7;
+  border-right:1px solid #FFFFFF;
+  color:#000000;
+}
+.block-featured-right {
+  /*background:#E7E7E7;*/
+  background:#FFFFFF;
+  border-left:1px solid #FFFFFF;
+  color:#000000;
+}
+.block-helpicon {
+  padding-top:5px;
+  text-align:right;
+  float:right;
+}
+.block-outerborder-left {
+  border-left:1px solid #E7E7E7;
+  padding:0px;
+  margin:0px;
+}
+.block-outerborder-right {
+  border-right:1px solid #CCCCCC;
+}
+.block-title,
+.blocktitle,
+.block-title-left,
+.block-title-right {
+  background:transparent;
+  color:#1A3955;
+  font-weight:bold;
+  padding-top:5px;
+  padding-bottom:5px;
+  text-align:left;
+}
+/* Comments *******************************************************************/
+.commentbar-line1 {
+  background:transparent;
+  color:#000000;
+  padding:3px 3px;
+  text-align:center;
+}
+.commentbar-line2 {
+  background:#bac0cd;
+  text-align:center;
+  padding-left:3px;
+  padding-right:3px;
+  border-top:1px solid #676b72;
+  border-bottom:1px solid #676b72;
+}
+.commentbar-line3 {
+  background:#FFFFFF;
+  border-bottom:1px solid #FFFFFF;
+  border-top:1px solid #E7E7E7;
+  color:#000000;
+  padding:3px 3px;
+  text-align:center;
+}
+.commenttitle {    
+  color: #000033;
+  font: bold 110% tahoma,helvetica,arial,sans-serif;
+  background:#DFE6F6;
+  border:1px dotted #bac0cd;
+  border-bottom:1px solid #bac0cd;
+  padding:3px 0px 3px 2px
+}
+/* *****************************************************************************/
+.edit-perm-down {
+  text-align:center;
+}
+.edit-perm-up {
+  text-align:center;
+  padding-right:10px;
+  padding-left:10px;
+}
+.fieldhelp {
+  font-size:0.8em;
+  color:#666666;
+}
+/* Footer *********************************************************************/
+.footer-divider-top {
+  background:#FFFFFF;
+  border-top:1px solid #CCCCCC;
+  padding-top:1px;
+  color:#000000;
+}
+/* Forms **********************************************************************/
+.form-description {
+  font-weight:bold;
+  float:left;
+  width:100px;
+  text-align:right;
+  padding-right:5px;
+  display:block;
+}
+.form-field {
+  padding-bottom:5px;
+  margin-left:105px;
+}
+.checkboxes-list {  /* this is used for example by COM_checkList */
+  list-style:none;
+  padding:0px;
+  margin:0px;
+}
+.checkboxes-list span { /* space between the text and the checkbox */
+  padding-left:5px;
+}
+.checkboxes-list .gldefault { /* default blocks in the user settings block list */
+  font-weight:bold;
+}
+.missing-field {
+  /* reserved for future use */
+}
+.required-field {
+  /* reserved for future use */
+}
+/* Header *********************************************************************/
+.header-logo {
+  float:left;
+  padding-left:15px;
+  padding-top:13px;
+}
+.header-slogan {
+  float:right;
+  line-height:78px;
+  padding-right:15px;
+  color: #ffffff;
+}
+.header-logobg-container-inner {
+  background:url(images/header-bg.png) #1A3955;
+  border-bottom:1px solid #CCCCCC;
+  height:78px;
+  margin-bottom:1px;
+}
+.header-navigation-container {
+  border-bottom:1px solid #FFFFFF;
+  background:#E7E7E7;
+}
+.header-navigation-container ul {
+  list-style: none;
+  padding:0px;
+  margin:0px;
+  border-bottom:1px solid #CCCCCC;
+  color:#FFFFFF;
+  float:right;
+  height:24px;
+}
+.header-navigation-container li {
+  float:left;
+  padding-right:9px;
+  padding-left:9px;
+  margin-top:4px;
+  background:transparent;
+  font-size:.9em;
+  border-left: 1px dotted #FFFFFF;
+}
+.header-navigation-container a:link {
+  color:#0000FF;
+}
+.header-navigation-container a:visited {
+  color:#800080;
+}
+.header-navigation-container a:hover {
+  color:#008000;
+}
+.header-navigation-container a:active {
+  color:#FF0000;
+}
+.header-welcomeanddate-text {
+  padding-top:12px;
+  padding-left:4px;
+  margin: 0px;
+  height:40px;
+  border-bottom:1px solid #CCCCCC;
+}
+/******************************************************************************/
+.highlight {
+  color:#000000;
+  background-color:yellow;
+  text-decoration:none;
+}
+.inputTable td {
+  padding:4px;
+  vertical-align:top;
+}
+.inputTable label {
+  font-weight:bold;
+  float:right;
+  white-space:nowrap;
+}
+.moderation-cc {
+  width:100%;
+}
+.moderation-cc-row {
+  clear:both;
+  height:80px;
+  width:100%;
+}
+.moderation-cc-item {
+  float:left;
+  text-align:center;
+}
+.nowrap {
+  white-space:nowrap;
+}
+.pagenav {
+  text-align:center;
+}
+.row_center td {
+  text-align:center;
+}
+.searchauth {
+  background:transparent;
+  color:#000000;
+  text-align:left;
+}
+.searchdate {
+  background:transparent;
+  color:#000000;
+  text-align:right;
+}
+.searchform-box {
+  background:#E7E7E7;
+  text-align:right;
+  border-bottom:1px solid #CCCCCC;
+  height:52px;
+  padding:0px 4px 0px 1px;
+  margin:0px;
+}
+.searchform-elements {
+  display:inline;
+  position:relative;
+  top:6px;
+}
+.searchform-elements input {
+  font-size:0.9em;
+}
+.searchhits {
+  background:transparent;
+  color:#000000;
+  text-align:right;
+}
+.site-slogan {
+  color:#ffffff;
+  background:transparent;
+}
+.sysmessage img {
+  border:none;
+  float:left;
+  padding-bottom:3px;
+  padding-right:5px;
+}
+/* Stats **********************************************************************/
+.stats-list-count {
+  text-align:right;
+  padding-left:5px;
+  padding-right:5px;
+}
+.stats-header-title {
+  text-align:left;
+  width:90%;
+  padding-left:5px;
+  padding-right:5px;
+}
+.stats-header-count {
+  text-align:left;
+  width:10%;
+  padding-left:5px;
+  padding-right:5px;
+}
+/* Story **********************************************************************/
+.story {
+  /* the frame around all elements of one story */
+  background:transparent;
+  color:#000000;
+}
+.story h1 {
+  /* the title of a story */
+  background:transparent;
+  color:#000000;
+  font-weight:bold;
+  padding-left:1px;
+}
+.story-body {
+  /* this is the actual content of the story */
+  padding:3px;
+  line-height: 1.4 !important;
+  text-align: justify;
+  padding: 5px 5px 10px 5px;
+}
+.story-featured {
+  /* the frame around all elements of a featured story */
+  background:transparent;
+  color:#000000;
+}
+.story-featured h1 {
+  /* the title of a featured story */
+  background:transparent;
+  color:#000000;
+  font-weight:bold;
+  font-size:1.4em;
+  padding-left:1px;
+}
+.story-icons {
+  /* print & mail icons in a storybox */
+  float:right;
+  padding-top:10px;
+}
+.story-icons a {
+  margin-left:5px;
+}
+.story-container {
+  /* frame around all stories & centerblocks*/
+  padding-right:9px;
+  width:100%;
+  vertical-align:top;
+}
+.story-footer {
+  /* the bottom of the story with edit-links etc */
+  padding:3px;
+  text-align:center;
+  clear:both;
+}
+.story-footer p {
+  padding:0px;
+  margin:0px;
+}
+.story-information {
+    background:transparent none repeat scroll 0%;
+  color:#777777;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:12px;
+  line-height:20px;
+  font-weight:normal;
+}
+.story-information p {
+  padding:0px;
+  margin:0px;
+}
+/******************************************************************************/
+.topicoption,
+.topicoption-off {
+}
+.warning {
+  background:transparent;
+  color:#FF0000;
+  font-weight:bold;
+}
+.warningsmall {
+  background:transparent;
+  color:#FF0000;
+}
+
+/* Default Plugin CSS Declarations */
+/* Recommended CSS to be used by Plugin Authors - allows easier site themeing */
+
+.plugin {
+  color:#000000;
+  background-color:#EFEFEF;
+  font-weight:normal;
+  border:1px solid #CCCCCC;
+}
+.plugin th {
+  color:#000000;
+  background-color:#B7C1DC;
+  padding:5px;
+  text-align:left;
+}
+.plugin tr {
+  vertical-align:top;
+}
+.plugin td {
+  padding:2px 5px 2px 5px;
+}
+.pluginBG {
+  color:#FEFEFE;
+  background-color:#7398BA;
+}
+.pluginAltBG {
+  background-color:#7398BA;
+}
+.pluginAltBG td {
+  color:#FFFFFF
+}
+.pluginCellTitle {
+  color:#666666;
+  font-weight:bold;
+  background-color:#E6E6E6;
+  padding:5px;
+}
+.pluginCellFill {
+  background-color:#F8FAFD;
+}
+.pluginCellText {
+  color:#636363;
+  font-weight:normal;
+}
+.pluginHeader {
+  color:#204275;
+  font-weight:bolder;
+  padding-top:3px;
+  padding-bottom:3px;
+}
+.pluginFooter, .pluginFooter td {
+  background-color:#507AA1;
+  color:#FFFFFF;
+  }
+.pluginAlert {
+  padding:5px 15px 5px 15px;
+  color:#D8010E;
+  background-color:#FEF1B4;
+  font-weight:bold;
+}
+.pluginInfo {
+  padding:5px 15px 5px 15px;
+  color:#707070;
+  background-color:#FEF1B4;
+  font-weight:normal;
+}
+.pluginSubTable {
+  color:#000000;
+  background-color:#CCCCCC;
+  font-weight:normal;
+  border:1px solid #CCCCCC;
+}
+.pluginSubTable th {
+  color:#000000;
+  background-color:#C9D1E4;
+  padding:5px;
+  text-align:left;
+}
+.pluginSubTable tr {
+  vertical-align:top;
+}
+.pluginSolidOutline {
+  background-color:#CCCCCC;
+}
+.pluginSolidFill {
+  background-color:#1A3955;
+}
+.pluginTitle {
+  background-color:#507AA1;
+  color:#F5F9FF;
+  padding:4px;
+  padding-left:6px;
+  padding-right:6px;
+}
+.pluginCellSubTitle {
+  background-color:#F7F7F7;
+  color:#000000;
+  padding:4px;
+  padding-left:6px;
+  padding-right:6px;
+}
+.pluginTinyText {
+  font-size:0.70em;
+}
+.pluginSmallText {
+  font-size:0.8em;
+}
+.pluginMediumText {
+  font-size:1em;
+}
+.pluginLargeText {
+  font-size:1.25em;
+}
+.pluginAltText {
+  color:#FFFFFF;
+}
+.pluginRow1, .pluginRow1 td {
+  color:#000000;
+  background-color:#F7F7F7;
+  line-height:120%;
+}
+.pluginRow2, .pluginRow2 td {
+  color:#000000;
+  background-color:#E7E7E7;
+  line-height: 120%;
+}
+.pluginRow1 .pluginRollOver,
+.pluginRow2 .pluginRollOver,
+.pluginRollOver {
+  color:#000000;
+  background-color:#CCFFCC;
+  line-height:120%;
+}
+.pluginRow1 .pluginRollOut,
+.pluginRow2 .pluginRollOut,
+.pluginRollOut {
+  color:#000000;
+  background-color:#F7F7F7;
+  line-height:120%;
+}
+.pluginLinks A:link {
+  color:#000000;
+  font-style:normal;
+  font-weight:normal;
+  text-decoration:none;
+}
+.pluginLinks A:visited {
+  color:#000000;
+  font-style:normal;
+  font-weight:normal;
+  text-decoration:none;
+}
+.pluginLinks A:hover {
+  color:#000000;
+  font-style:normal;
+  font-weight:normal;
+  text-decoration:underline;
+}
+.pluginBreadCrumbs,
+.pluginBreadCrumbs A:link {
+  color:#FFFFFF;
+  font-style:normal;
+  font-weight:normal;
+  text-decoration:none;
+}
+.pluginBreadCrumbs A:visited {
+  color:#FFFFFF;
+  font-style:normal;
+  font-weight:normal;
+  text-decoration:none;
+}
+.pluginBreadCrumbs A:hover {
+  color:#FFFFFF;
+  font-style:normal;
+  font-weight:normal;
+  text-decoration:none;
+}
+a.pluginButton:link, a.pluginButton:visited {
+  color:#000000;
+  text-align:center;
+  padding-top:2px;
+  display:block;
+  height:19px;
+  text-decoration:none;
+  background-color:transparent;
+}
+a.pluginButton:hover {
+  color:blue;
+  text-align:center;
+  padding-top:2px;
+  background:center url(navbar/images/button_over.gif);
+  background-repeat:repeat-x;
+  display:block;
+  height:19px;
+  text-decoration:none;
+  background-color:transparent;
+}
+
+/* Navbar Class CSS ***********************************************************/
+#navcontainer {
+  float:left;
+  width:100%;
+  background:#F4F4F4;
+  font-size:93%;
+  line-height:normal;
+  border-bottom:1px solid #24618E;
+  }
+#navcontainer ul {
+  margin:0px;
+  padding:10px 10px 0 50px;
+  list-style:none;
+}
+#navcontainer li {
+  display:inline;
+  margin:0px;
+  padding:0px;
+}
+#navcontainer a {
+  float:left;
+  background:url("navbar/images/tableftJ.gif") no-repeat left top;
+  margin:0px;
+  padding:0px 0px 0px 5px;
+  text-decoration:none;
+}
+#navcontainer a span {
+  float:left;
+  display:block;
+  background:url("navbar/images/tabrightJ.gif") no-repeat right top;
+  padding:5px 15px 4px 6px;
+  color:#24618E;
+}
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#navcontainer a span {
+  float:none;
+}
+/* End IE5-Mac hack */
+#navcontainer a:hover span {
+  color:#FFFFFF;
+}
+#navcontainer a:hover {
+  background-position:0% -42px;
+}
+#navcontainer a:hover span {
+  background-position:100% -42px;
+}
+#navcontainer a#current span {
+  background:url("navbar/images/tabrightI.gif") no-repeat left top;
+  background-position:100% -42px;
+  color:#FFFFFF;
+}
+#navcontainer a:link#current,
+#navcontainer a:visited#current,
+#navcontainer a:hover#current {
+  background:url("navbar/images/tableftI.gif") no-repeat left top;
+  background-position:0% -42px;
+}
+
+/* Common CSS for on-hover tooltip feature */
+a.tooltip {
+  position: relative; /*this is the key*/
+  z-index:10;
+  color:#000;
+  text-decoration:none;
+}
+a.tooltip:hover  {
+  z-index:100;
+  text-decoration:none;
+}
+a.tooltip span {
+  display: none;
+}
+a.tooltip:hover span {
+  /*the span will display just on :hover state*/
+  z-index:100;
+  color:#033666;
+  font-style:normal;
+  font-size:.8em;
+  line-height: 125%;
+  display:block;
+  position:absolute;
+  border:1px solid #C8DAF7;
+  background-color:#E5EFFF;
+  padding:4px;
+  text-align: left;
+  text-decoration:none;
+  left:-20px;
+  top:10px;
+  min-width:150px;
+}
+/* End of common CSS for on-hover info feature */
+
+/* End of Common Plugin CSS */
+
+/* ROBG added/modified CSS definitions */
+
+#topNavBkgnd {
+  background-image:url(http://hints.macworld.com/layout/hints1/theme-images/hdrBkg5.gif);
+  background-repeat: repeat-x;
+  height:103px;
+}
+#topNav {
+  background-color:transparent;
+  margin:0px;
+  padding:0 10px 0 0;
+  float:left;
+}
+#topNav ul {
+  margin:0px;
+  padding:0 0 0 30px;
+}
+#topNav li {
+  border-right:1px solid #A2A4A6;
+  float:left;
+  font-family:helvetica,arial,san-serif;
+  font-size:12px;
+  height:26px;
+  line-height:26px;
+  list-style-image:none;
+  list-style-position:outside;
+  list-style-type:none;
+  margin:0pt;
+  padding:0pt;
+}
+#topNav li a {
+  text-decoration:none;
+  color:#000;
+  height:26px;
+  padding:0 11px 0 11px;
+  display:block;
+  float:left;
+}
+#topNav li a:hover {
+  background-image:url(http://images.macworld.com/images/templates/v4/macbuy/navOverBkg.gif);
+  color:#ffffff;
+}
+#topNavOther {
+  background-color:transparent;
+  height:103px;
+  margin:0px;
+  padding:0;
+  float:right;
+}
+#topNavOther ul {
+  margin:0 5px 0 0;
+  padding:0px;
+}
+#topNavOther li#otherHdr {
+  border-left:none;
+  padding:0;
+  background-image:none;
+  font-weight:normal;
+}
+#topNavOther li#otherFirst {
+  border-left:none;
+  padding:0;
+  background-image:none;
+}
+#topNavOther li {
+  background-image:url(bullet.gif);
+  background-repeat:no-repeat;
+  background-position:left center;
+  font-size:11px;
+  font-weight:bold;
+  font-family:helvetica,arial,san-serif;
+  float:left;
+  line-height:29px;
+  list-style-image:none;
+  list-style-position:outside;
+  list-style-type:none;
+  margin:0;
+  padding:0 0 0 4px;
+}
+html>body #topNavOther li {
+  padding:0 0 0 3px;
+  background-position:left 11px;
+}
+#topNavOther li a {
+  text-decoration:none;
+  color:#555555;
+  height:26px;
+  padding:0 7px 0 7px;
+  display:block;
+  float:left;
+  font-size:11px;
+  font-weight:bold;
+  font-family:helvetica,arial,san-serif;
+}
+#topNavOther li a:hover {
+  font-weight:bold;
+  text-decoration:underline;
+  font-size:11px;
+  font-weight:bold;
+  font-family:helvetica,arial,san-serif;
+}
+#topNav li#macBack {
+  float:left;
+  list-style:none;
+  margin:0;
+  padding:0;
+  border-right:none;
+  border-left:none;
+  background-image:url(http://hints.macworld.com/layout/hints1/theme-images/hintsBackMac.gif);
+  background-repeat:no-repeat;
+  background-position:center;
+  width:85px;
+}
+#topNav li#macBack a {
+  height:27px;
+  width:85px;
+  margin:0;
+}
+#topNav li#macBack a:hover {
+  float:left;
+  list-style:none;
+  margin:0;
+  padding:0;
+  border-right:none;
+  background-image:url(http://hints.macworld.com/layout/hints1/theme-images/hintsBackMacDk.gif);
+  background-repeat:no-repeat;
+  background-position:center;
+  width:85px;
+}
+img#macLogo {
+  /*margin:-2px 0 0 10px;*/
+}
+html>body img#macLogo {
+  margin:28px 0 0px -125px;
+}
+.potw-text {
+  font-size:90%;
+  text-align:center;
+  margin:-60px 20px 0 0px;
+  float:right;
+  background-color: #FFFFFF;
+  padding: 4px;
+  line-height: 12pt;
+  color:#000099;
+  border:1px solid;
+  display: table;
+}
+.header-navigation a:link {
+  color: #000033;
+  background:transparent;
+  text-decoration: none;
+}
+.header-navigation a:visited {
+  color: #000033;
+  background:transparent;
+  text-decoration: none;
+}
+.header-navigation a:hover {
+  background:transparent;
+  text-decoration: underline;
+}
+.header-navigation a:active {
+  background:transparent;
+  color:#FF0000;
+}
+.header-special {
+  color:#990000;
+  font-weight:bold;
+}
+.header-special a:link {
+  background:transparent;
+  text-decoration: none;
+  color:#F6921E;
+  font-weight:bold;
+}
+.header-special a:visited {
+  color:#F6921E;
+}
+.header-special a:hover {
+  text-decoration: underline;
+}
+.header-special a:active {
+  background:transparent;
+}
+a:link.non-ul {
+  color:#005c9e;
+  background: transparent;
+  text-decoration: none;
+}
+a:visited.non-ul {
+  color:#005c9e;
+  background: transparent;
+  text-decoration: none;
+}
+a:hover:visited.non-ul {
+  color:#000033;
+  background: transparent;
+  text-decoration: underline;
+}
+a:hover.non-ul {
+  background: transparent;
+  color:#932100;
+  text-decoration: underline;
+}
+a:active.non-ul {
+  color:#005c9e;
+  background: transparent;
+  text-decoration: none;
+}
+.story-title {
+  padding-left:5px;
+  border-top:1px solid #bac0cd;
+  border-bottom:1px solid #bac0cd;
+  vertical-align:middle;
+  background: #ffffff;
+  color:#000033;
+  font: bold 135% tahoma,helvetica,arial,sans-serif;
+}
+.story-title-featured {
+  padding-left:5px;
+  background: #ced4e3;
+  color:#000033;
+  font: bold 125% tahoma,helvetica,arial,sans-serif;
+}
+.story-control {
+  line-height: 1.6 !important;
+  color:#3c3c3c;
+  font: 90% verdana,tahoma,helvetica,arial,sans-serif;
+  background-color:#F1F6FA;
+  border-bottom:1px solid #DEDEDE;
+  border-top:1px solid #DEDEDE;
+  margin-bottom:40px;
+  margin-top:10px;
+  padding-right:5px;
+  padding-top:5px;
+  padding-bottom:5px;
+}
+.story-control:link {
+  color:#3c3c3c;
+  text-decoration: underline;
+}
+.story-control :visited{
+  color:#3c3c3c;
+}
+.story-control :hover{
+  color:#932100;
+}
+pre code, tt code {
+    color: #9F2D00;
+    font-family: Monaco, Courier, monospace;
+    font-size: 100%
+}
+tt, code, pre {
+    color: #9F2D00;
+    font-family: Monaco, Courier, monospace;
+    font-size: 12px;
+}
+a:link {
+  background:transparent;
+  color:#0000FF;
+}
+a:visited {
+  background:transparent;
+  color:#800080
+}
+a:hover {
+  background:transparent;
+  color:#008000
+}
+a:active {
+  background:transparent;
+  color:#FF0000
+}
+.block-bg-right a:link {
+  color: #000066;
+  text-decoration: none; 
+}
+
+.block-bg-right a:hover {
+  background-color: #fff3a2;
+  background-image: none;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-position: 0% 0%;
+  color: #932100;
+}
+
+.block-bg-right a:visited {
+  text-decoration:none;
+  color: #005f7a;
+}
+.block-bg-right a:visited:hover {
+  background-color:transparent;
+  border-bottom-width: 1px;
+  border-bottom-style: dotted;
+  border-bottom-color: #005f7a;
+}
+.xpinputfield {
+  border:1px solid #7B9EBD;
+  padding-top:2px;
+  padding-bottom:1px;
+  margin-bottom:1px;
+}
+.footerblock {
+  border-top:1px solid #CCCCCC;
+  color:#000033;
+  font: 85% verdana,tahoma,helvetica,arial,sans-serif;
+  padding-bottom:10px;
+  padding-top:2px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.footerblock a:link {
+  background:transparent;
+  color:#000033;
+  font:100% verdana,tahoma,helvetica,arial,sans-serif;
+  text-decoration:underline
+}
+.footerblock a:visited {
+  color:#000033;
+  text-decoration:underline
+}
+.footerblock a:hover {
+  color:#008000;
+  font:100% verdana,tahoma,helvetica,arial,sans-serif;
+  text-decoration:underline
+}
+.footerblock a:active {
+  color:#000033;
+  font:100% verdana,tahoma,helvetica,arial,sans-serif;
+  text-decoration:underline
+}
+#IDG {
+  padding:0 10px 0 0;
+}
+#IDG p {
+  display:inline;
+}
+#IDG form {
+  display:inline;
+}
+
+#ntwrk {
+  margin:0;
+  padding:0 0 10px 0;
+}
+#ntwrk img {
+  float:left;
+  padding:0 6px 0 5px;
+}
+#ntwrk  ul {
+  margin:0;
+  padding:0;
+}
+
+#ntwrk  ul li {
+  margin:0;
+  padding:0;
+  list-style:none;
+  float:left;
+}
+
+#ntwrk  ul li a {
+  margin:0;
+  padding:0 6px 0 0;
+  color:#000033;
+  font-family:verdana,tahoma,helvetica,arial,sans-serif;
+  font-size:100%;
+  font-size-adjust:none;
+  font-stretch:normal;
+  font-style:normal;
+  font-variant:normal;
+  font-weight:normal;
+  line-height:normal;
+  text-decoration:underline;
+}
+#ntwrk  ul li a:hover {
+  color:#008000;
+}
+
+.story-body a:link{
+  color: #000099;
+}
+.story-body a:visited{
+  color: #000033;
+}
+.story-body a:hover{
+  color:#932100;
+}
+.comment-author {
+  padding-left: 2px;
+  color:#1e1e1e;
+  font:11px verdana,tahoma,helvetica,arial,sans-serif
+}
+.comment-author :link{
+  color:#1e1e1e;
+  text-decoration: underline;
+}
+.comment-author :visited{
+  color:#1e1e1e;
+}
+.comment-author :hover{
+  color:#932100;
+}
+.comment-divider {
+  background:#FFFFFF;
+  border-bottom:1px solid #F7F7F7;
+  border-top:3px double #CCCCCC;
+  color:#000000;
+  padding-top:2px;
+}
+.comment-box {
+  border:1px dotted #BAC0CD;
+  border-top:none;
+  padding:5px;
+  margin-bottom:10px;
+}
+.comment-footer {
+  font-family: verdana,tahoma,helvetica,arial,sans-serif;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  font-size: 11px;
+}
+.comment-footer :link {
+  color: #1e1e1e;
+}
+.comment-footer :hover {
+  color: #932100;
+}
+
+
+/* ROBG added/modified CSS definitions */
+
