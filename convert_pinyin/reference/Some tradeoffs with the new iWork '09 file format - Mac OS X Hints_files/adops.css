@@ -1,0 +1,53 @@
+.textAds {background-image:none;margin:35px 0 20px 0;border:solid 1px #CDCDCD;padding:5px;background-color:#fff;}
+	.textAds ul {margin:0;padding:0;list-style:none;clear:both;}
+	.textAds li {font-size:13px;line-height:117%;margin:5px 0;}
+	.textAds li a {color:#4d4d4d;display:inline;line-height:normal;text-decoration:none;}
+	.textAds li a:hover {color:#921a1d;}
+	.textAds .visibleUrl a {font-size:10px;text-decoration:none;color:green;margin: -2px 0 0 0;}
+	.textAds li strong a {margin:0;color:#00559A;text-decoration:underline;display:inline;font-weight:bold;}
+	#leftColumn #article .textAds {width:auto;padding:10px;margin:0 0 20px;}
+	#leftColumn #article .textAds .title {width:140px;}
+	
+	#homepage #leftColumn .textAds {float:right;width:424px;}
+
+	
+#productGuides {}
+	#productGuides small {line-height:normal;display:block}
+	#rightColumn div#productGuides h2 { margin-bottom: 0; }
+	#rightColumn div#productGuides a {font-size:12px;}
+	#rightColumn div#productGuides small a {font-size:11px;}
+	#productGuides a:visited {color:#005C9C;}
+
+	#rightColumn #productGuides li div.more2 {margin-top:10px;padding:10px 0 0;border:solid #e4e4e4;border-width:1px 0 0;font-size:12px;}
+	#rightColumn #productGuides li.last {border:none;padding-bottom:0px;}
+
+
+	#rightColumn .textAds {border:1px solid #ccc;margin-top:0;}
+	#rightColumn .textAds .title {padding:5px 10px 5px 0; width: auto; }
+	#rightColumn .textAds ul {border:none;}
+	#rightColumn .textAds li,
+	#rightColumn .textAds li.last { font-size: 13px; padding:0;border:none;}	
+	
+
+/* iMeet video module */
+
+.imeetPopupBanner {background: url("http://zapp5.staticworld.net/ad/preview/imeet-video/iMeet-Mock_v5.png") no-repeat scroll 0 0 transparent !important;height: 450px;margin-left: 6px;}
+.imeetPopupBanner ul#imeetPopupVideolist {border: 0 solid #000000;margin: 77px 0 0;}
+.imeetPopupBanner ul#imeetPopupVideolist li {border: 0 solid #000000;height: 76px;text-indent: -3000px;}
+.imeetPopupBanner ul#imeetPopupVideolist li a {display: block;height: 76px;outline: medium none;}
+.imeetPopupBanner .imeet_video a {display: block;}
+
+
+.imeetPopup2Banner {background: url("http://images.macworld.com/images/imeet/iMeet_VideoModule_Part2mw.png") no-repeat scroll 0 0 transparent !important;height: 450px;margin-left: 6px;}
+.imeetPopup2Banner ul#imeetPopup2Videolist {border: 0 solid #000000;margin: 77px 0 0;}
+.imeetPopup2Banner ul#imeetPopup2Videolist li {border: 0 solid #000000;height: 76px;text-indent: -3000px;}
+.imeetPopup2Banner ul#imeetPopup2Videolist li a {display: block;height: 76px;outline: medium none;}
+.imeetPopup2Banner .imeet_video a {display: block;}
+
+
+/* sweeps clean up */
+.rightWrap .blxAdopsPlacement table {padding:0 !important;margin:0 0 10px 0 !important;border:none;border-collapse:collapse}
+.rightWrap .blxAdopsPlacement table a img {border:1px solid #AAA;margin:0 9px 10px 10px;width:119px}
+.rightWrap .blxAdopsPlacement table td{padding:0 !important;margin:0 !important;color:#111;font-size:12px;line-height:15px;vertical-align:top}
+.rightWrap .blxAdopsPlacement table h2 {font-weight:bold;font-size:18px;padding:8px 0 10px 10px}
+.rightWrap .blxAdopsPlacement table h3 a {font-weight:bold;font-size:15px;display:block;margin-top:5px}

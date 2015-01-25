@@ -1,0 +1,93 @@
+div.rating {
+position:relative;
+}
+
+.rate {
+  border: 1px solid #ffffff;
+}
+
+.rate hover {
+  border: 1px solid #ff0000;
+}
+
+.rating_item {
+  display: inline;
+}
+
+
+/* Star AJAX Rating System */
+.loading {
+	height: 10px;
+	line-height:10px;
+	padding:0;
+	margin:0;
+	background: url('images/working.gif') 50% 50% no-repeat;
+}
+.unit-rating { /* the UL */
+	list-style:none;
+	margin: 0px;
+	padding:0px;
+	margin-left:5px;
+	margin-right:5px;
+	height: 15px;
+	position: absolute; /* relative */
+	background: url('images/star_ajax.png') top left repeat-x;
+}
+.unit-rating li{
+    text-indent: -30000px;
+	padding:0px;
+	margin:0px;
+	/*\*/
+	float: left;
+	/* */
+}
+.unit-rating li a {
+	outline: none;
+	display:block;
+	width:15px;
+	height: 15px;
+	text-decoration: none;
+	text-indent: -3000px;
+	z-index: 20;
+	position: absolute;
+	padding: 0px;
+}
+.unit-rating li a:hover{
+	background: url('images/star_ajax.png') left center;
+	z-index: 2;
+	left: 0px;
+	line-height:10px
+}
+.unit-rating a.r1-unit{left: 0px;}
+.unit-rating a.r1-unit:hover{width:15px;}
+.unit-rating a.r2-unit{left:15px;}
+.unit-rating a.r2-unit:hover{width: 30px;}
+.unit-rating a.r3-unit{left: 30px;}
+.unit-rating a.r3-unit:hover{width: 45px;}
+.unit-rating a.r4-unit{left: 45px;}
+.unit-rating a.r4-unit:hover{width: 60px;}
+.unit-rating a.r5-unit{left: 60px;}
+.unit-rating a.r5-unit:hover{width: 75px;}
+.unit-rating a.r6-unit{left: 75px;}
+.unit-rating a.r6-unit:hover{width: 90px;}
+.unit-rating a.r7-unit{left: 90px;}
+.unit-rating a.r7-unit:hover{width: 105px;}
+.unit-rating a.r8-unit{left: 105px;}
+.unit-rating a.r8-unit:hover{width: 120px;}
+.unit-rating a.r9-unit{left: 120px;}
+.unit-rating a.r9-unit:hover{width: 135px;}
+.unit-rating a.r10-unit{left: 135px;}
+.unit-rating a.r10-unit:hover{width: 150px;}
+.unit-rating li.current-rating {
+	background: url('images/star_ajax.png') left bottom;
+	position: absolute;
+	height: 15px;
+	display: block;
+	text-indent: -3000px;
+	z-index: 1;
+	left:0px;
+	padding:0;
+	line-height:10px;
+}
+
+/* end of ajax stuff */
