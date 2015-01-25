@@ -40,15 +40,16 @@ def convert(filename):
         with open(filename, 'rb') as f:
             contents = f.read()
     diacritics = {
+            # Original mapping:
+            # '§': 'ǎ', '¶': 'ě', '•': 'ǐ', 'ª': 'ǒ', 'º': 'ǔ', '√': 'ǚ',
             b'&#xA7;': b'&#x1CE;', b'&#xB6;': b'&#x11B;',
             b'&#x2022;': b'&#x1D0;', b'&#xAA;': b'&#x1D2;',
             b'&#xBA;': b'&#x1D4;', b'&#x221A;': b'&#x1DA;',
+            # Original mapping:
+            # '¡': 'ā', '™': 'ē', '£': 'ī', '¢': 'ō', '∞': 'ū'
             b'&#xA1;': b'&#x101;', b'&#x2122;': b'&#x113;',
             b'&#xA3;': b'&#x12B;', b'&#xA2;': b'&#x14D;',
             b'&#x221E;': b'&#x16B;'}
-    # Below is the mapping:
-    # '§': 'ǎ', '¶': 'ě', '•': 'ǐ', 'ª': 'ǒ', 'º': 'ǔ', '√': 'ǚ',
-    # '¡': 'ā', '™': 'ē', '£': 'ī', '¢': 'ō', '∞': 'ū'
     for k in diacritics:
         contents = re.sub(k, diacritics[k], contents)
     if old_style:
