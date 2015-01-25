@@ -8,10 +8,13 @@ Utilities to help me with Chinese-language work and other NLP tasks
 
  1. `separate_pinyin/` Takes a string of Pīnyīn as input and returns a list of the discrete component syllables. There is a second program `count_syllables.py` to count the number of syllables found.
 
+1. `convert_pinyin/`: Convert files in Pages (v. 8) format so that their non-standard tonal diacritics are normalized to Unicode. Does not work with later versions of Pages. Sample font ("shyrbaw" 時報, based on Times) is included in directory.
+
  1. `statistics/`: Little programs to calculate statistical tests.
 
  1. `poetry_flask/`: The beginnings of a web application to assist the study of medieval Chinese prosody.
 
  1. `hanamin_fonts/`: Copy of the HANAMIN fonts for use with this project.
+ 
  
 [end]
