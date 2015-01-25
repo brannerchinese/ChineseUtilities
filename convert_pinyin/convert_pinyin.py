@@ -5,45 +5,73 @@
 
 import os
 import gzip
+import re
+import sys
+import subprocess
 
-def convert(filename="Untitled.pages"):#Colloq Chin Patterns  03-08.pages"):
+def main():
+    print('Files to be converted will be looked for in the "data" directory.')
+    if os.path.exists('data'):
+        for filename in os.listdir('data'):
+            if filename == '.DS_Store':
+                continue
+            print('\nTrying file\n    "{}"'.format(filename))
+            if convert(filename):
+                print('        Conversion successful.')
+        print('\nNo more files found.\n')
+    else:
+        print('No directory "data" found.')
+
+def convert(filename):
+    """Convert tonal diacritics from font Shyrbaw to standard Unicode"""
+    if filename == None:
+        return
     # Old-version pages "files" are actually directories; new ones are not.
-    filename = os.path.join('data', filename)
-    if os.path.isdir(filename):
-        # In old ones, the actual content is a gzip-ed XML file.
+    if os.path.isdir(os.path.join('data', filename)):
+        # In the old version, the actual content is a gzip-ed XML file.
         old_style = True
-        with gzip.open(os.path.join(filename, 'index.xml.gz'), 'rb') as f:
+        gz_filename = os.path.join('data', filename, 'index.xml.gz')
+        with gzip.open(gz_filename, 'rb') as f:
             contents = f.read()
     else:
+        # Not sure yet how to deal with the new version (v. 9 and later).
+        sys.exit('File\n    {}\n    cannot be converted.'.format(filename))
         old_style = False
         with open(filename, 'rb') as f:
             contents = f.read()
-    print(contents)
+    diacritics = {
+            b'&#xA7;': b'&#x1CE;', b'&#xB6;': b'&#x11B;',
+            b'&#x2022;': b'&#x1D0;', b'&#xAA;': b'&#x1D2;',
+            b'&#xBA;': b'&#x1D4;', b'&#x221A;': b'&#x1DA;',
+            b'&#xA1;': b'&#x101;', b'&#x2122;': b'&#x113;',
+            b'&#xA3;': b'&#x12B;', b'&#xA2;': b'&#x14D;',
+            b'&#x221E;': b'&#x16B;'}
+    # Below is the mapping:
+    # '§': 'ǎ', '¶': 'ě', '•': 'ǐ', 'ª': 'ǒ', 'º': 'ǔ', '√': 'ǚ',
+    # '¡': 'ā', '™': 'ē', '£': 'ī', '¢': 'ō', '∞': 'ū'
+    for k in diacritics:
+        contents = re.sub(k, diacritics[k], contents)
     if old_style:
-        diacritics = {
-                # '§': 'ǎ', '¶': 'ě', '•': 'ǐ', 'ª': 'ǒ', 'º': 'ǔ', '√': 'ǚ',
-                '&#xA1;': '&#x101;', '&#x2211;': '&#x113;', '&#xA3;': '&#x12B;',
-                '&#xA2;': '&#x14D;', '&#x221E;': '&#x16B;',
-                # '¡': 'ā', '™': 'ē', '£': 'ī', '¢': 'ō', '∞': 'ū'
-                '&#xA7;': '&#x1CE;', '&#xB6;': '&#x11B;', '&#x2022;': '&#x1D0;',
-                '&#xAA;': '&#x1D2;', '&#xBA;': '&#x1D4;', '&#x221A;': '&#x1DA;',
-                }
-    else:
-        diacritics = {
-                # '§': 'ǎ', '¶': 'ě', '•': 'ǐ', 'ª': 'ǒ', 'º': 'ǔ', '√': 'ǚ',
-                '\xa1': '\x101', '\x2211': '\x113', '\xa3': '\x12b',
-                '\xa2': '\x14d', '\x221e': '\x16b',
-                # '¡': 'Ā', '™': 'Ē', '£': 'Ī', '¢': 'Ō', '∞': 'Ū'
-                '\xa7': '\x1ce', '\xb6': '\x11b', '\x2022': '\x1d0',
-                '\xaa': '\x1d2', '\xba': '\x1d4', '\x221a': '\x1da',
-                }
-    for i, c in enumerate(contents):
-        if c in diacritics:
-            contents[i] = diacritics[c]
-    if old_style:
-        with gzip.open(os.path.join(filename, 'index.xml.gz'), 'wb') as f:
+        # This is done inefficiently because of apparent filesystem issues.
+        old_files = os.path.join('data', 'old_files')
+        if not os.path.exists(old_files):
+            os.mkdir(old_files)
+        subprocess.call(
+                ['/bin/cp', '-R', os.path.join('data', filename), old_files])
+        with gzip.open(gz_filename, 'wb') as f:
             f.write(contents)
+        converted_files = os.path.join('data', 'converted_files')
+        if not os.path.exists(converted_files):
+            os.mkdir(converted_files)
+        subprocess.call(
+                ['/bin/mv', os.path.join('data', filename), converted_files])
+        os.rename(os.path.join(converted_files, filename),
+                os.path.join(converted_files, filename +
+                    '_converted_to_unicode.pages'))
     else:
         with open(filename, 'wb') as f:
             f.write(contents)
-    return contents
+    return True
+
+if __name__ == '__main__':
+    main()
